@@ -4,7 +4,7 @@ SCRIPT_NAME="idenaupdate.sh"
 SCRIPT_PATH="idena-scripts"
 DAEMON_PATH="idena"
 PATH_NAME="https://github.com/idena-network/idena-go.git"
-RPATH_NAME="https://github.com/idena-network/idena-go/releases/download/v"
+RPATH_NAME="https://github.com/idena-network/idena-go/releases/download"
 if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/root"
  else
@@ -47,7 +47,7 @@ echo -n -e "($HOMEFOLDER/$DAEMON_PATH/idena-node -v | grep " >> $SCRIPT_NAME
 echo '$LATEST_TAG) ]]; then' >> $SCRIPT_NAME
 echo '  FILE_NAME+=$LATEST_TAG' >> $SCRIPT_NAME
 echo '  if [ -f $FILE_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
-echo '  wget "$RELEASES_PATH/$LATEST_TAG/$FILE_NAME"' >> $SCRIPT_NAME
+echo '  wget "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"' >> $SCRIPT_NAME
 echo '  chmod +x $FILE_NAME' >> $SCRIPT_NAME
 echo '  mv $FILE_NAME $HOMEFOLDER/$DAEMON_PATH/idena-node' >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
