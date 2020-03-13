@@ -32,7 +32,7 @@ echo '  cd idena-go' >> $SCRIPT_NAME
 echo '  git fetch' >> $SCRIPT_NAME
 echo '  else' >> $SCRIPT_NAME
 echo '  git clone $GITPATH' >> $SCRIPT_NAME
-echo '  cd nkn' >> $SCRIPT_NAME
+#echo '  cd idena-go' >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 echo -e "chown -R $USER:$USER $HOMEFOLDER/idena-go" >> $SCRIPT_NAME
 echo 'LATEST_TAG=$(git tag --sort=-creatordate | head -1)' >> $SCRIPT_NAME
