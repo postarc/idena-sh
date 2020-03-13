@@ -52,8 +52,8 @@ echo '  chmod +x $FILE_NAME' >> $SCRIPT_NAME
 echo -n '  mv $FILE_NAME ' >> $SCRIPT_NAME
 echo -e "$HOMEFOLDER/$DAEMON_PATH/idena-node" >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
+echo 'cd $CURRENTDIR' >> $SCRIPT_NAME
 
-#echo 'LATEST_TAG=$( ps -e | grep idena-node | awk '{print $1}' )' >> $SCRIPT_NAME
 #echo 'if [ -z $LATEST_TAG ]; then systemctl start nkn.service; fi' >> $SCRIPT_NAME
 #echo 'cd $CURRENTDIR' >> $SCRIPT_NAME
 
