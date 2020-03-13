@@ -49,7 +49,7 @@ echo '  FILE_NAME+=$LATEST_TAG' >> $SCRIPT_NAME
 echo '  if [ -f $FILE_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
 echo '  wget "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"' >> $SCRIPT_NAME
 echo '  chmod +x $FILE_NAME' >> $SCRIPT_NAME
-echo "  pKILL=$(ps -e | grep idena | awk '{print($1)}')" >> $SCRIPT_NAME
+echo '  pKILL= $(ps -e | grep idena | awk '\''{print($1)}'\'')' >> $SCRIPT_NAME
 echo '  if [ ! -z pKILL ]; then systemctl stop idena.service' >> $SCRIPT_NAME
 echo -n '  mv $FILE_NAME ' >> $SCRIPT_NAME
 echo -e "$HOMEFOLDER/$DAEMON_PATH/idena-node" >> $SCRIPT_NAME
