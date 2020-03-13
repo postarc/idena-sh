@@ -49,7 +49,8 @@ echo '  FILE_NAME+=$LATEST_TAG' >> $SCRIPT_NAME
 echo '  if [ -f $FILE_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
 echo '  wget "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"' >> $SCRIPT_NAME
 echo '  chmod +x $FILE_NAME' >> $SCRIPT_NAME
-echo '  mv $FILE_NAME $HOMEFOLDER/$DAEMON_PATH/idena-node' >> $SCRIPT_NAME
+echo -n '  mv $FILE_NAME ' >> $SCRIPT_NAME
+echo -e "$HOMEFOLDER/$DAEMON_PATH/idena-node" >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 
 #echo 'LATEST_TAG=$( ps -e | grep idena-node | awk '{print $1}' )' >> $SCRIPT_NAME
