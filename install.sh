@@ -26,7 +26,7 @@ echo -e "${YELLOW}Preparing installation...${NC}"
 sudo apt update
 sudo apt install git
 
-echo -e "${CYAN}Creating idena service...${NC}"
+echo -e "${MAG}Creating idena service...${NC}"
 echo "[Unit]" > idena.service
 echo "Description=idena" >> idena.service
 echo "[Service]" >> idena.service
