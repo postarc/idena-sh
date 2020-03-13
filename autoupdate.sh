@@ -43,7 +43,7 @@ echo 'LATEST_TAG=$(git tag --sort=-creatordate | head -1)' >> $SCRIPT_NAME
 echo 'cd ..' >> $SCRIPT_NAME
 echo 'LATEST_TAG=${LATEST_TAG//v/}' >> $SCRIPT_NAME
 echo -n 'if [[ -z $' >> $SCRIPT_NAME
-echo -n -e "($HOMEFOLDER/$DAEMON_PATH/idena-node -v | grep" >> $SCRIPT_NAME
+echo -n -e "($HOMEFOLDER/$DAEMON_PATH/idena-node -v | grep " >> $SCRIPT_NAME
 echo '$LATEST_TAG) ]]; then' >> $SCRIPT_NAME
 echo '  FILE_NAME+=$LATEST_TAG' >> $SCRIPT_NAME
 echo '  if [ -f $DIR_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
