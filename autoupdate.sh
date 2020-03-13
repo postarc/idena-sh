@@ -24,7 +24,7 @@ echo "#!/bin/bash" > $SCRIPT_NAME
 echo >> $SCRIPT_NAME
 echo -e "GITPATH=$PATH_NAME" >> $SCRIPT_NAME
 echo -e "RELEASES_PATH=$RPATH_NAME" >> $SCRIPT_NAME
-echo 'DIR_NAME="idena-node-linux-"' >> $SCRIPT_NAME
+echo 'FILE_NAME="idena-node-linux-"' >> $SCRIPT_NAME
 echo 'CURRENTDIR=$(pwd)' >> $SCRIPT_NAME
 echo -e "cd $HOMEFOLDER" >> $SCRIPT_NAME
 echo 'if [ -d idena-go ]; then' >> $SCRIPT_NAME
@@ -41,10 +41,10 @@ echo -n 'if [[ -z $' >> $SCRIPT_NAME
 echo -n -e "($HOMEFOLDER/nknd -v | grep " >> $SCRIPT_NAME
 echo '$LATEST_TAG) ]]; then' >> $SCRIPT_NAME
 
-echo '  DIR_NAME+=${LATEST_TAG//v/}' >> $SCRIPT_NAME
-echo '  if [ -f $DIR_NAME.zip ]; then rm $DIR_NAME.zip; fi' >> $SCRIPT_NAME
-echo '  wget "$RELEASES_PATH/$LATEST_TAG/$DIR_NAME.zip"' >> $SCRIPT_NAME
-echo '  unzip "$DIR_NAME.zip" >/dev/null 2>&1' >> $SCRIPT_NAME
+echo '  FILE_NAME+=${LATEST_TAG//v/}' >> $SCRIPT_NAME
+echo '  if [ -f $DIR_NAME ]; then rm $DIR_NAME; fi' >> $SCRIPT_NAME
+echo '  wget "$RELEASES_PATH/$LATEST_TAG/$DIR_NAME"' >> $SCRIPT_NAME
+echo '  mv $DIR_NAME idena-node' >> $SCRIPT_NAME
 #echo '  chmod +x $DIR_NAME/nkn*' >> $SCRIPT_NAME
 echo '  cp -r $DIR_NAME/* .' >> $SCRIPT_NAME
 
