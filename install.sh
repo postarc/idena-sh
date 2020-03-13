@@ -20,7 +20,7 @@ if [[ "$USER" == "root" ]]; then
 fi
 
 CURRENTDIR=$(pwd)
-cd $HOMEFOLDER\idena-sh
+cd $HOMEFOLDER/idena-sh
 if [ ! -d $HOMEFOLDER ]; then mkdir $HOMEFOLDER; fi
 echo -e "${YELLOW}Preparing installation...${NC}"
 sudo apt update
@@ -62,4 +62,4 @@ echo -e "${CYAN}For idena.service file editing: ${BLUE}sudo nano /etc/systemd/sy
 echo -e "${CYAN}After editing idena.service file: ${BLUE}sudo systemctl daemon-reload${NC}"
  
 cd $HOMEFOLDER
-rm -rf $HOMEFOLDER\idena-sh
+rm -rf $HOMEFOLDER/idena-sh
