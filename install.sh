@@ -47,3 +47,19 @@ bash autoupdate.sh
 
 sudo ufw allow 40403
 sudo ufw allow 40404
+
+echo -e "${GREEN}Starting idena node...${NC}" 
+sudo systemctl start idena.service
+
+echo -e "${MAG}Idena node control:${NC}"
+echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start idena.service${NC}"
+echo -e "${CYAN}Stop idena node: ${BLUE}sudo systemctl stop idena.service${NC}"
+echo -e "${CYAN}Enabe idena service: ${BLUE}sudo systemctl enable idena.service${NC}"
+echo -e "${CYAN}Disable idena service: ${BLUE}sudo systemctl disable idena.service${NC}"
+echo -e "${CYAN}Status idena node: ${BLUE}sudo systemctl status idena.service${NC}"
+
+echo -e "${CYAN}For idena.service file editing: ${BLUE}sudo nano /etc/systemd/system/idena.service${NC}"
+echo -e "${CYAN}After editing idena.service file: ${BLUE}sudo systemctl daemon-reload${NC}"
+ 
+cd $HOMEFOLDER
+rm -rf $HOMEFOLDER\idena-sh
