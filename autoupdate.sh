@@ -46,7 +46,7 @@ echo -n 'if [[ -z $' >> $SCRIPT_NAME
 echo -n -e "($HOMEFOLDER/$DAEMON_PATH/idena-node -v | grep " >> $SCRIPT_NAME
 echo '$LATEST_TAG) ]]; then' >> $SCRIPT_NAME
 echo '  FILE_NAME+=$LATEST_TAG' >> $SCRIPT_NAME
-echo '  if [ -f $DIR_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
+echo '  if [ -f $FILE_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
 echo '  wget "$RELEASES_PATH/$LATEST_TAG/$FILE_NAME"' >> $SCRIPT_NAME
 echo '  chmod +x $FILE_NAME' >> $SCRIPT_NAME
 echo '  mv $FILE_NAME $HOMEFOLDER/$DAEMON_PATH/idena-node' >> $SCRIPT_NAME
