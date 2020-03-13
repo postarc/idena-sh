@@ -21,7 +21,7 @@ fi
 
 CURRENTDIR=$(pwd)
 cd $HOMEFOLDER/idena-sh
-if [ ! -d $HOMEFOLDER ]; then mkdir $HOMEFOLDER; fi
+if [ ! -d $HOMEFOLDER/$NODE_DIR ]; then mkdir $HOMEFOLDER/$NODE_DIR; fi
 echo -e "${YELLOW}Preparing installation...${NC}"
 sudo apt update
 sudo apt install git
