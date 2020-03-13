@@ -59,6 +59,8 @@ echo -e "${CYAN}Status idena node: ${BLUE}sudo systemctl status idena.service${N
 
 echo -e "${CYAN}For idena.service file editing: ${BLUE}sudo nano /etc/systemd/system/idena.service${NC}"
 echo -e "${CYAN}After editing idena.service file: ${BLUE}sudo systemctl daemon-reload${NC}"
+echo -e "${GREEN}the log is available on command: ${PURPLE}tail -f ~/idena/datadir/logs/output.log${NC}"
+
  
 cd $HOMEFOLDER
 rm -rf $HOMEFOLDER/idena-sh
