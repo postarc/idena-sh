@@ -32,7 +32,7 @@ echo "Description=idena" >> idena.service
 echo "[Service]" >> idena.service
 echo -e "User=$USER" >> idena.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> idena.service
-echo -e "ExecStart=$HOMEFOLDER/idena-node --profile=lowpower" >> idena.service
+echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower" >> idena.service
 echo "Restart=always" >> idena.service
 echo "RestartSec=3" >> idena.service
 echo "LimitNOFILE=500000" >> idena.service
