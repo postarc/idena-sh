@@ -12,6 +12,7 @@ if [[ "$USER" == "root" ]]; then
 fi
 
 CURRENTDIR=$(pwd)
+if [ ! -d $HOMEFOLDER/$SCRIPT_PATH ]; then mkdir $HOMEFOLDER/$SCRIPT_PATH; fi
 cd $HOMEFOLDER/$SCRIPT_PATH
 
 if [[ -z $(sudo -u root crontab -l | grep 'idenaupdate.sh') ]]; then
