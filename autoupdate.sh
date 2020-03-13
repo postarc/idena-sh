@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_NAME="idenaupdate.sh"
-SCRIPT_PATH="idena-script"
+SCRIPT_PATH="idena-scripts"
 DAEMON_PATH="idena"
 PATH_NAME="https://github.com/idena-network/idena-go.git"
 RPATH_NAME="https://github.com/idena-network/idena-go/releases"
