@@ -47,6 +47,7 @@ bash autoupdate.sh
 
 sudo ufw allow 40403
 sudo ufw allow 40404
+sudo ufw allow 40405
 
 echo -e "${GREEN}Starting idena node...${NC}" 
 sudo bash $HOMEFOLDER/idena-scripts/idenaupdate.sh
