@@ -45,7 +45,6 @@ rm idena.service
 
 bash autoupdate.sh
 
-sudo ufw allow 9009
 sudo ufw allow 40403
 sudo ufw allow 40404
 
