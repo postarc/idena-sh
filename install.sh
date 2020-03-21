@@ -50,7 +50,7 @@ sudo ufw allow 40404
 sudo ufw allow 40405
 
 echo -e "${GREEN}Starting idena node...${NC}" 
-sudo bash $HOMEFOLDER/idena-scripts/autoupdate.sh
+sudo bash $HOMEFOLDER/idena-scripts/idenaupdate.sh
 echo -e "${MAG}Idena node control:${NC}"
 echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start idena.service${NC}"
 echo -e "${CYAN}Stop idena node: ${BLUE}sudo systemctl stop idena.service${NC}"
