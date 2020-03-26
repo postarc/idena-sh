@@ -22,12 +22,12 @@ fi
 CURRENTDIR=$(pwd)
 cd $HOMEFOLDER/idena-sh
 if [ ! -d $HOMEFOLDER/$NODE_DIR ]; then mkdir $HOMEFOLDER/$NODE_DIR; fi
-echo -e "${YELLOW}Preparing installation...${NC}"
+echo -e "${GREEN}Preparing installation...${NC}"
 sudo apt update
 sudo apt install -y git jq curl
 
 
-echo -e "${YELLOW}Creating idena service...${NC}"
+echo -e "${GREEN}Creating idena service...${NC}"
 echo "[Unit]" > idena.service
 echo "Description=idena" >> idena.service
 echo "[Service]" >> idena.service
@@ -58,10 +58,11 @@ read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    bash autoupdate.sh
 fi
-echo -e "${GREEN}Starting idena node...${NC}" 
+echo -e "${GREEN}Downloading idena node...${NC}" 
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    sudo bash $HOMEFOLDER/idena-scripts/idenaupdate.sh
 fi 
+
 echo -e "${MAG}Idena node control:${NC}"
 echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start idena.service${NC}"
 echo -e "${CYAN}Stop idena node: ${BLUE}sudo systemctl stop idena.service${NC}"
