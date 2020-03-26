@@ -21,7 +21,9 @@ if [[ -z $(sudo -u root crontab -l | grep 'automineon.sh') ]]; then
 fi
 
 cd $HOMEFOLDER/$SCRIPT_PATH
-echo 'PORT=9009' > $SCRIPT_NAME
+echo '#!/bin/bash' > $SCRIPT_NAME
+echo >> $SCRIPT_NAME
+echo 'PORT=9009' >> $SCRIPT_NAME
 echo -e "APIPATH=$HOMEFOLDER/$DAEMON_PATH" >> $SCRIPT_NAME
 echo >> $SCRIPT_NAME
 echo 'CURRENTDIR=$(pwd)' >> $SCRIPT_NAME
