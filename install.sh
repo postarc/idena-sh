@@ -43,8 +43,16 @@ sudo cp idena.service /etc/systemd/system/idena.service
 sudo systemctl enable idena.service
 rm idena.service
 
-bash autoupdate.sh
-
+echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}'
+read ANSWER
+if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+   bash autoupdate.sh
+fi
+echo -n -e "${YELLOW}Do you want enable mining autostart script? [Y,n]:${NC}'
+read ANSWER
+if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+   bash automine.sh
+fi
 sudo ufw allow 40403
 sudo ufw allow 40404
 sudo ufw allow 40405
