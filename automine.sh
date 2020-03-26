@@ -11,6 +11,13 @@ if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/home/$USER"
 fi
 
+if [[ -z $(sudo -u root crontab -l | grep 'automineon.sh') ]]; then
+        sudo -u root crontab -l > cron
+        echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/automineon.sh >/dev/null 2>&1" >> cron
+        sudo -u root crontab cron
+        rm cron
+fi
+
 cd $HOMEFOLDER/$SCRIPT_PATH
 echo 'PORT=9009' > $SCRIPT_NAME
 echo -e "APIPATH=$HOMEFOLDER/$DAEMON_PATH" >> $SCRIPT_NAME
@@ -32,3 +39,5 @@ echo '   DATA='\''{"method": "dna_becomeOnline","params": [{"nonce": 0,"epoch":'
 echo '   curl http://127.0.0.1:$PORT -H "content-type:application/json;" -d "$DATA"' >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 echo 'cd $CURRENTDIR' >> $SCRIPT_NAME
+
+chmod +x $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME
