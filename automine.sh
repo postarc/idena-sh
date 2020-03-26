@@ -11,7 +11,7 @@ if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/home/$USER"
 fi
 
-cd $HOMEFOLDER$SCRIPT_PATH
+cd $HOMEFOLDER/$SCRIPT_PATH
 echo 'PORT=9009' > $SCRIPT_NAME
 echo -e "APIPATH=$HOMEFOLDER$DAEMON_PATH" >> $SCRIPT_NAME
 echo >> $SCRIPT_NAME
