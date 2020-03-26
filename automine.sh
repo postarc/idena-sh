@@ -13,7 +13,7 @@ fi
 
 if [[ -z $(sudo -u root crontab -l | grep 'automineon.sh') ]]; then
         sudo -u root crontab -l > cron
-        echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/automineon.sh >/dev/null 2>&1" >> cron
+        echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME >/dev/null 2>&1" >> cron
         sudo -u root crontab cron
         rm cron
 fi
