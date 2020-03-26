@@ -24,7 +24,8 @@ cd $HOMEFOLDER/idena-sh
 if [ ! -d $HOMEFOLDER/$NODE_DIR ]; then mkdir $HOMEFOLDER/$NODE_DIR; fi
 echo -e "${YELLOW}Preparing installation...${NC}"
 sudo apt update
-sudo apt install git
+sudo apt install -y git jq
+
 
 echo -e "${YELLOW}Creating idena service...${NC}"
 echo "[Unit]" > idena.service
@@ -43,12 +44,12 @@ sudo cp idena.service /etc/systemd/system/idena.service
 sudo systemctl enable idena.service
 rm idena.service
 
-echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}'
+echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
 read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    bash autoupdate.sh
 fi
-echo -n -e "${YELLOW}Do you want enable mining autostart script? [Y,n]:${NC}'
+echo -n -e "${YELLOW}Do you want enable mining autostart script? [Y,n]:${NC}"
 read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    bash automine.sh
