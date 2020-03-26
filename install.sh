@@ -44,22 +44,24 @@ sudo cp idena.service /etc/systemd/system/idena.service
 sudo systemctl enable idena.service
 rm idena.service
 
-echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
-read ANSWER
-if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-   bash autoupdate.sh
-fi
+sudo ufw allow 40403
+sudo ufw allow 40404
+sudo ufw allow 40405
+
 echo -n -e "${YELLOW}Do you want enable mining autostart script? [Y,n]:${NC}"
 read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    bash automine.sh
 fi
-sudo ufw allow 40403
-sudo ufw allow 40404
-sudo ufw allow 40405
-
+echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
+read ANSWER
+if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+   bash autoupdate.sh
+fi
 echo -e "${GREEN}Starting idena node...${NC}" 
-sudo bash $HOMEFOLDER/idena-scripts/idenaupdate.sh
+if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+   sudo bash $HOMEFOLDER/idena-scripts/idenaupdate.sh
+fi 
 echo -e "${MAG}Idena node control:${NC}"
 echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start idena.service${NC}"
 echo -e "${CYAN}Stop idena node: ${BLUE}sudo systemctl stop idena.service${NC}"
