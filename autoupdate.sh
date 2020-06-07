@@ -15,12 +15,6 @@ CURRENTDIR=$(pwd)
 if [ ! -d $HOMEFOLDER/$SCRIPT_PATH ]; then mkdir $HOMEFOLDER/$SCRIPT_PATH; fi
 cd $HOMEFOLDER/$SCRIPT_PATH
 
-if [[ -z $(sudo -u root crontab -l | grep 'idenaupdate.sh') ]]; then
-        sudo -u root crontab -l > cron
-        echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME >/dev/null 2>&1" >> cron
-        sudo -u root crontab cron
-        rm cron
-fi
 echo "Create script file..."
 
 echo "#!/bin/bash" > $SCRIPT_NAME
