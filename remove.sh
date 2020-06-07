@@ -3,6 +3,7 @@
 DAEMON_FILE='idena-node'
 NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
+SHELL_DIR='idena-sh'
 
 #color
 BLUE="\033[0;34m"
@@ -26,4 +27,6 @@ sudo crontab -l > cron
 sed '/$SCRIPT_NAME/d' cron > cronn
 sudo crontab cronn
 rm cron cronn
+echo -e "${YELLOW}Cleaning...${NC}"
+rm -rf $SHELL_DIR
 echo -e -n "${GREEN}"; echo 'All Done!!!'; echo -e -n "${NC}"
