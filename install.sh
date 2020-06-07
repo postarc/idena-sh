@@ -86,12 +86,14 @@ echo -e "${GREEN}The log is available on command: ${PURPLE}tail -f ~/idena/datad
 
 echo -e -n "${RED}ATTENTION! Your private key:"
 cat idena/datadir/keystore/nodekey
+echo
 echo -e "To view the private key of your node, enter:"
 echo -e -n "${PURPLE}"
 echo 'cat idena/datadir/keystore/nodekey'
 echo -e -n "${NC}"
 echo -e -n "${GREEN}Your API.KEY:"
 cat idena/datadir/api.key
+echo
 echo -e "To view the API.KEY of your node, enter:"
 echo -e -n "${PURPLE}"
 echo 'cat idena/datadir/api.key'
