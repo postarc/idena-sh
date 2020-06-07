@@ -21,8 +21,8 @@ sudo systemctl stop idena.serivce
 sudo systemctl disable idena.service
 sudo rm /etc/systemd/system/idena.service
 echo -e "${YELLOW}Remove directory...${NC}"
-if [ -d $NODE_DIR ]; then rm -rf $NODE_DIR; fi
-if [ -d $SCRIPT_DIR ]; then rm -rf $SCRIPT_DIR; fi
+if [ -d $NODE_DIR ]; then sudo rm -rf $NODE_DIR; fi
+if [ -d $SCRIPT_DIR ]; then sudo rm -rf $SCRIPT_DIR; fi
 echo -e "${YELLOW}Cleaning crontab...${NC}"
 sudo crontab -l > cron
 sed /$SCRIPT_NAME/d cron > cronn
