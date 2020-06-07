@@ -17,6 +17,7 @@ MAG='\e[1;35m'
 echo -e "${YELLOW}Stop & remove service...${NC}"
 sudo systemctl stop idena.serivce
 sudo systemctl disable idena.service
+sudo rm /etc/systemd/system/idena.service
 echo -e "${YELLOW}Remove directory...${NC}"
 if [ -d $NODE_DIR ]; then rm -rf $NODE_DIR; fi
 if [ -d $SCRIPT_DIR ]; then rm -rf $SCRIPT_DIR; fi
@@ -25,3 +26,4 @@ sudo crontab -l > cron
 sed '/$SCRIPT_NAME/d' cron
 
 #echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME >/dev/null 2>&1" >> cron
+echo -e "${GREEN}All Done!\\!\\!${NC}"
