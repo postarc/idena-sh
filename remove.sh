@@ -25,4 +25,4 @@ echo -e "${YELLOW}Cleaning crontab...${NC}"
 sudo crontab -l > cron
 sed '/$SCRIPT_NAME/d' cron > cronn
 sudo crontab cronn
-echo -e "${GREEN}All Done!\\!\\!${NC}"
+echo -e "${GREEN}All Done!\!\!${NC}"
