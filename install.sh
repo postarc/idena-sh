@@ -2,6 +2,7 @@
 
 DAEMON_FILE='idena-node'
 NODE_DIR='idena'
+SCRIPT_DIR='idena-scripts'
 
 #color
 BLUE="\033[0;34m"
@@ -60,7 +61,7 @@ if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
 fi
 echo -e "${GREEN}Downloading idena node...${NC}" 
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-   sudo bash $HOMEFOLDER/idena-scripts/idenaupdate.sh
+   sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
 fi
 
 cd $HOMEFOLDER
