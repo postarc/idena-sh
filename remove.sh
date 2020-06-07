@@ -4,7 +4,8 @@ DAEMON_FILE='idena-node'
 NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
 SHELL_DIR='idena-sh'
-$SCRIPT_NAME='idenaupdate.sh'
+SCRIPT_NAME='idenaupdate.sh'
+
 #color
 BLUE="\033[0;34m"
 YELLOW="\033[0;33m"
