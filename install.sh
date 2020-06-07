@@ -61,8 +61,9 @@ fi
 echo -e "${GREEN}Downloading idena node...${NC}" 
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    sudo bash $HOMEFOLDER/idena-scripts/idenaupdate.sh
-fi 
+fi
 
+cd $HOMEFOLDER
 echo -e "${MAG}Idena node control:${NC}"
 echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start idena.service${NC}"
 echo -e "${CYAN}Stop idena node: ${BLUE}sudo systemctl stop idena.service${NC}"
@@ -73,6 +74,13 @@ echo -e "${CYAN}Status idena node: ${BLUE}sudo systemctl status idena.service${N
 echo -e "${CYAN}For idena.service file editing: ${BLUE}sudo nano /etc/systemd/system/idena.service${NC}"
 echo -e "${CYAN}After editing idena.service file: ${BLUE}sudo systemctl daemon-reload${NC}"
 echo -e "${GREEN}The log is available on command: ${PURPLE}tail -f ~/idena/datadir/logs/output.log${NC}"
+echo -e -n "${RED}ATTENTION! Copy and save the private key of the node:"
+cat idena/datadir/keystore/nodekey
+echo -e "${NC}"
+echo -e "${GREEN}Your API.KEY:"
+cat idena/datadir/api.key
+echo -e "${NC}"
+
 
  
 cd $HOMEFOLDER
