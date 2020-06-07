@@ -23,7 +23,6 @@ if [ -d $NODE_DIR ]; then rm -rf $NODE_DIR; fi
 if [ -d $SCRIPT_DIR ]; then rm -rf $SCRIPT_DIR; fi
 echo -e "${YELLOW}Cleaning crontab...${NC}"
 sudo crontab -l > cron
-sed '/$SCRIPT_NAME/d' cron
-
-#echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME >/dev/null 2>&1" >> cron
+sed '/$SCRIPT_NAME/d' cron > cronn
+sudo crontab cronn
 echo -e "${GREEN}All Done!\\!\\!${NC}"
