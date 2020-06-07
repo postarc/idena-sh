@@ -28,5 +28,5 @@ sed '/$SCRIPT_NAME/d' cron > cronn
 sudo crontab cronn
 rm cron cronn
 echo -e "${YELLOW}Cleaning...${NC}"
-rm -rf $SHELL_DIR
+#rm -rf $SHELL_DIR
 echo -e -n "${GREEN}"; echo 'All Done!!!'; echo -e -n "${NC}"
