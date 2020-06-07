@@ -3,6 +3,8 @@
 DAEMON_FILE='idena-node'
 NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
+SCRIPT_NAME='idenaupdate.sh'
+SCRIPT_PATH="idena-scripts"
 
 #color
 BLUE="\033[0;34m"
@@ -49,19 +51,25 @@ sudo ufw allow 40403
 sudo ufw allow 40404
 sudo ufw allow 40405
 
+echo -e "${GREEN}Downloading idena node...${NC}" 
+bash autoupdate.sh
+sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
+
+echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
+read ANSWER
+if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+  if [[ -z $(sudo -u root crontab -l | grep 'idenaupdate.sh') ]]; then
+        sudo -u root crontab -l > cron
+        echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME >/dev/null 2>&1" >> cron
+        sudo -u root crontab cron
+        rm cron
+  fi
+fi
+
 echo -n -e "${YELLOW}Do you want enable mining autostart script? [Y,n]:${NC}"
 read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    bash automine.sh
-fi
-echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
-read ANSWER
-if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-   bash autoupdate.sh
-fi
-echo -e "${GREEN}Downloading idena node...${NC}" 
-if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-   sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
 fi
 
 cd $HOMEFOLDER
