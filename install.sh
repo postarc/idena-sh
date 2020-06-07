@@ -85,10 +85,12 @@ echo -e "${CYAN}After editing idena.service file: ${BLUE}sudo systemctl daemon-r
 echo -e "${GREEN}The log is available on command: ${PURPLE}tail -f ~/idena/datadir/logs/output.log${NC}"
 
 echo -e "${RED}ATTENTION! To view the private key of your node, enter:"
+echo -e -n "${PURPLE}"
 echo 'cat idena/datadir/keystore/nodekey'
 echo -e -n "${NC}"
 
 echo -e "${GREEN}To view the API.KEY of your node, enter:"
+echo -e -n "${PURPLE}"
 echo 'cat idena/datadir/api.key'
 echo -e "${NC}"
 
