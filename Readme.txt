@@ -25,3 +25,9 @@ Status idena node:      sudo systemctl status idena.service
 For idena.service file editing:   sudo nano /etc/systemd/system/idena.service
 After editing idena.service file: sudo systemctl daemon-reload
 The log is available on command:  tail -f ~/idena/datadir/logs/output.log
+
+Просмотр/Редактирование API.KEY:
+nano idena/datadir/api.key
+Просмотр/Редактирование nodekey:
+nano idena/datadir/keystore/nodekey
+
