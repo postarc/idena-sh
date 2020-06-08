@@ -4,7 +4,8 @@ DAEMON_FILE='idena-node'
 NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
 SHELL_DIR='idena-sh'
-SCRIPT_NAME='idenaupdate.sh'
+SCRIPT1_NAME='idenaupdate.sh'
+SCRIPT2_NAME='automineon.sh'
 
 #color
 BLUE="\033[0;34m"
@@ -25,8 +26,9 @@ if [ -d $NODE_DIR ]; then sudo rm -rf $NODE_DIR; fi
 if [ -d $SCRIPT_DIR ]; then sudo rm -rf $SCRIPT_DIR; fi
 echo -e "${YELLOW}Cleaning crontab...${NC}"
 sudo crontab -l > cron
-sed /$SCRIPT_NAME/d cron > cronn
-sudo crontab cronn
+sed /$SCRIPT1_NAME/d cron > cronn
+sed /$SCRIPT2_NAME/d cronn > cron
+sudo crontab cron
 rm cron cronn
 echo -e "${YELLOW}Cleaning...${NC}"
 rm -rf $SHELL_DIR
