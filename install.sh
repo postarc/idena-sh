@@ -66,9 +66,9 @@ if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
   fi
 fi
 
-echo -n -e "${YELLOW}Do you want enable mining autostart script? [Y,n]:${NC}"
+echo -n -e "${YELLOW}Do you want enable mining autostart script? [y,N]:${NC}"
 read ANSWER
-if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+if [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    bash automine.sh
 fi
 
