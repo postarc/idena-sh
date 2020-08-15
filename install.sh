@@ -111,13 +111,12 @@ echo 'cat idena/datadir/keystore/nodekey'
 echo -e -n "${NC}"
 echo -e -n "${GREEN}Your API.KEY:"
 cat idena/datadir/api.key
-echo
 echo -e "To view the API.KEY of your node, enter:"
 echo -e -n "${PURPLE}"
 echo 'cat idena/datadir/api.key'
 echo -e "${NC}"
 echo -e "${GREEN}Your RPC Port: $RPCPORT. Use it for tunnel settings.${NC}"
-
+echo
 
  
 cd $HOMEFOLDER
