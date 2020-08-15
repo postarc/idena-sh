@@ -3,17 +3,19 @@
 DAEMON_PATH="idena/datadir"
 SCRIPT_PATH="idena-scripts"
 SCRIPT_NAME="automineon.sh"
+SERVICE_NAME='idena'
 
 CURRENTDIR=$(pwd)
 if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/root"
  else
         HOMEFOLDER="/home/$USER"
+        SERVICE_NAME="$USER"
 fi
 
 if [ ! -d $HOMEFOLDER/$SCRIPT_PATH ]; then mkdir $HOMEFOLDER/$SCRIPT_PATH; fi
 
-if [[ -z $(sudo -u root crontab -l | grep 'automineon.sh') ]]; then
+if [[ -z $(sudo -u root crontab -l | grep "$HOMEFOLDER/$SCRIPT_PATH/automineon.sh" ) ]]; then
         sudo -u root crontab -l > cron
         echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME >/dev/null 2>&1" >> cron
         sudo -u root crontab cron
