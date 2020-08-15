@@ -26,12 +26,10 @@ NC='\033[0m'
 MAG='\e[1;35m'
 cd $HOMEFOLDER
 echo -e "${RED}A T T E N T I O N ! ! !${NC}"
-echo -e "${RED}You want to save nodekey file [y;N]:${NC}"
+echo -e "${RED}You want to save nodekey file [Y;n]:${NC}"
 read ANSWER
-if [ $ANSWER ]; then
-   if [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-       mv $NODE_DIR/datadir/keystore/nodekey $HOMEFOLDER/
-   fi
+if [ ! $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+     mv $NODE_DIR/datadir/keystore/nodekey $HOMEFOLDER/
 fi
 echo -e "${YELLOW}Stop & remove service...${NC}"
 sudo systemctl stop $SERVICE_NAME.serivce
