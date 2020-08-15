@@ -5,10 +5,12 @@ SCRIPT_PATH="idena-scripts"
 DAEMON_PATH="idena"
 PATH_NAME="https://github.com/idena-network/idena-go.git"
 RPATH_NAME="https://github.com/idena-network/idena-go/releases/download"
+SERVICE_NAME="idena"
 if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/root"
  else
         HOMEFOLDER="/home/$USER"
+        SERVICE_NAME="$USER"
 fi
 
 CURRENTDIR=$(pwd)
@@ -44,10 +46,11 @@ echo '  if [ -f $FILE_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
 echo '  wget "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"' >> $SCRIPT_NAME
 echo '  chmod +x $FILE_NAME' >> $SCRIPT_NAME
 echo '  pKILL= $(ps -e | grep idena | awk '\''{print($1)}'\'')' >> $SCRIPT_NAME
-echo '  if [ ! -z pKILL ]; then systemctl stop idena.service; fi' >> $SCRIPT_NAME
+echo -n '  if [ ! -z pKILL ]; then '  >> $SCRIPT_NAME
+echo -e "systemctl stop $SERVICE_NAME.service; fi" >> $SCRIPT_NAME
 echo -n '  mv $FILE_NAME ' >> $SCRIPT_NAME
 echo -e "$HOMEFOLDER/$DAEMON_PATH/idena-node" >> $SCRIPT_NAME
-echo '  systemctl start idena.service' >> $SCRIPT_NAME
+echo -e " systemctl start $SERVICE_NAME.service" >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 echo 'cd $CURRENTDIR' >> $SCRIPT_NAME
 
