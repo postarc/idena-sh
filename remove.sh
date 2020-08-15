@@ -39,11 +39,11 @@ echo -e "${YELLOW}Remove directory...${NC}"
 if [ -d $NODE_DIR ]; then sudo rm -rf $NODE_DIR; fi
 if [ -d $SCRIPT_DIR ]; then sudo rm -rf $SCRIPT_DIR; fi
 echo -e "${YELLOW}Cleaning crontab...${NC}"
-sudo crontab -l > cron
-sed /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT1_NAME/d cron > cronn
-sed /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT2_NAME/d cronn > cron
-sudo crontab cron
-rm cron cronn
+sudo -u root crontab -l > cron
+sed -i /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT1_NAME/d cron 
+sed -i /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT2_NAME/d cron
+sudo -u root crontab cron
+rm cron
 echo -e "${YELLOW}Cleaning...${NC}"
 rm -rf $SHELL_DIR
 echo -e -n "${GREEN}"; echo 'All Done!!!'; echo -e -n "${NC}"
