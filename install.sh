@@ -84,7 +84,7 @@ fi
 
 echo -n -e "${YELLOW}Do you want enable mining autostart script? [y,N]:${NC}"
 read ANSWER
-if [ $ANSWER]; then
+if [ $ANSWER ]; then
    if [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    bash automine.sh
    fi
