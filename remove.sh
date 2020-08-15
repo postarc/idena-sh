@@ -6,6 +6,14 @@ SCRIPT_DIR='idena-scripts'
 SHELL_DIR='idena-sh'
 SCRIPT1_NAME='idenaupdate.sh'
 SCRIPT2_NAME='automineon.sh'
+SERVICE_NAME='idena'
+
+if [[ "$USER" == "root" ]]; then
+        HOMEFOLDER="/root"
+ else
+        HOMEFOLDER="/home/$USER"
+        SERVICE_NAME="$USER"
+fi
 
 #color
 BLUE="\033[0;34m"
@@ -18,16 +26,16 @@ NC='\033[0m'
 MAG='\e[1;35m'
 
 echo -e "${YELLOW}Stop & remove service...${NC}"
-sudo systemctl stop idena.serivce
-sudo systemctl disable idena.service
-sudo rm /etc/systemd/system/idena.service
+sudo systemctl stop $SERVICE_NAME.serivce
+sudo systemctl disable $SERVICE_NAME.service
+sudo rm /etc/systemd/system/$SERVICE_NAME.service
 echo -e "${YELLOW}Remove directory...${NC}"
 if [ -d $NODE_DIR ]; then sudo rm -rf $NODE_DIR; fi
 if [ -d $SCRIPT_DIR ]; then sudo rm -rf $SCRIPT_DIR; fi
 echo -e "${YELLOW}Cleaning crontab...${NC}"
 sudo crontab -l > cron
-sed /$SCRIPT1_NAME/d cron > cronn
-sed /$SCRIPT2_NAME/d cronn > cron
+sed /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT1_NAME/d cron > cronn
+sed /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT2_NAME/d cronn > cron
 sudo crontab cron
 rm cron cronn
 echo -e "${YELLOW}Cleaning...${NC}"
