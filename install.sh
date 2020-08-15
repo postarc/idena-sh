@@ -5,6 +5,9 @@ NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
 SCRIPT_NAME='idenaupdate.sh'
 SCRIPT_PATH="idena-scripts"
+SERVICE_NAME='idena'
+RPCPORT=9009
+IPFSPORT=40405
 
 #color
 BLUE="\033[0;34m"
@@ -20,7 +23,19 @@ if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/root"
  else
         HOMEFOLDER="/home/$USER"
+        SERVICE_NAME="$USER"
 fi
+
+while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPCPORT)" ]
+do
+(( RPCPORT++))
+done
+
+while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $IPFSPORT)" ]
+do
+(( IPFSPORT++))
+done
+
 
 CURRENTDIR=$(pwd)
 cd $HOMEFOLDER/idena-sh
@@ -31,25 +46,26 @@ sudo apt install -y git jq curl
 
 
 echo -e "${GREEN}Creating idena service...${NC}"
-echo "[Unit]" > idena.service
-echo "Description=idena" >> idena.service
-echo "[Service]" >> idena.service
-echo -e "User=$USER" >> idena.service
-echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> idena.service
-echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower" >> idena.service
-echo "Restart=always" >> idena.service
-echo "RestartSec=3" >> idena.service
-echo "LimitNOFILE=500000" >> idena.service
-echo "[Install]" >> idena.service
-echo "WantedBy=default.target" >> idena.service
+echo "[Unit]" > $SERVICE_NAME.service
+echo "Description=idena" >> $SERVICE_NAME.service
+echo "[Service]" >> $SERVICE_NAME.service
+echo -e "User=$USER" >> $SERVICE_NAME.service
+echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
+echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --rpcport $RPCPORT --ipfsport $IPFSPORT" >> $SERVICE_NAME.service
+echo "Restart=always" >> $SERVICE_NAME.service
+echo "RestartSec=3" >> $SERVICE_NAME.service
+echo "LimitNOFILE=500000" >> $SERVICE_NAME.service
+echo "[Install]" >> $SERVICE_NAME.service
+echo "WantedBy=default.target" >> $SERVICE_NAME.service
 
-sudo cp idena.service /etc/systemd/system/idena.service
-sudo systemctl enable idena.service
-rm idena.service
+sudo cp $SERVICE_NAME.service /etc/systemd/system/$SERVICE_NAME.service
+sudo systemctl enable $SERVICE_NAME.service
+rm $SERVICE_NAME.service
 
 sudo ufw allow 40403
 sudo ufw allow 40404
-sudo ufw allow 40405
+sudo ufw allow $IPFSPORT
+sudo ufw allow $RPCPORT
 
 echo -e "${GREEN}Downloading idena node...${NC}" 
 bash autoupdate.sh
@@ -76,13 +92,13 @@ fi
 
 cd $HOMEFOLDER
 echo -e "${MAG}Idena node control:${NC}"
-echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start idena.service${NC}"
-echo -e "${CYAN}Stop idena node: ${BLUE}sudo systemctl stop idena.service${NC}"
-echo -e "${CYAN}Enabe idena service: ${BLUE}sudo systemctl enable idena.service${NC}"
-echo -e "${CYAN}Disable idena service: ${BLUE}sudo systemctl disable idena.service${NC}"
-echo -e "${CYAN}Status idena node: ${BLUE}sudo systemctl status idena.service${NC}"
+echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start $SERVICE_NAME.service${NC}"
+echo -e "${CYAN}Stop idena node: ${BLUE}sudo systemctl stop $SERVICE_NAME.service${NC}"
+echo -e "${CYAN}Enabe idena service: ${BLUE}sudo systemctl enable $SERVICE_NAME.service${NC}"
+echo -e "${CYAN}Disable idena service: ${BLUE}sudo systemctl disable $SERVICE_NAME.service${NC}"
+echo -e "${CYAN}Status idena node: ${BLUE}sudo systemctl status $SERVICE_NAME.service${NC}"
 
-echo -e "${CYAN}For idena.service file editing: ${BLUE}sudo nano /etc/systemd/system/idena.service${NC}"
+echo -e "${CYAN}For idena.service file editing: ${BLUE}sudo nano /etc/systemd/system/$SERVICE_NAME.service${NC}"
 echo -e "${CYAN}After editing idena.service file: ${BLUE}sudo systemctl daemon-reload${NC}"
 echo -e "${GREEN}The log is available on command: ${PURPLE}tail -f ~/idena/datadir/logs/output.log${NC}"
 
