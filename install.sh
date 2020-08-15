@@ -74,7 +74,7 @@ sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
 echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
 read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-  if [[ -z $(sudo -u root crontab -l | grep 'idenaupdate.sh') ]]; then
+  if [[ -z $(sudo -u root crontab -l | grep "$HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME") ]]; then
         sudo -u root crontab -l > cron
         echo -e "0 */1 * * * $HOMEFOLDER/$SCRIPT_PATH/$SCRIPT_NAME >/dev/null 2>&1" >> cron
         sudo -u root crontab cron
