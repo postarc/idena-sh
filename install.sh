@@ -102,15 +102,16 @@ echo -e "${CYAN}For idena.service file editing: ${BLUE}sudo nano /etc/systemd/sy
 echo -e "${CYAN}After editing idena.service file: ${BLUE}sudo systemctl daemon-reload${NC}"
 echo -e "${GREEN}The log is available on command: ${PURPLE}tail -f ~/idena/datadir/logs/output.log${NC}"
 
-echo -e -n "${RED}ATTENTION! Your private key:"
+echo -e -n "${RED}ATTENTION! Your private key: "
 cat idena/datadir/keystore/nodekey
 echo
-echo -e "To view the private key of your node, enter:"
+echo -e -n "To view the private key of your node, enter: "
 echo -e -n "${PURPLE}"
 echo 'cat idena/datadir/keystore/nodekey'
 echo -e -n "${NC}"
 echo -e -n "${GREEN}Your API.KEY:"
 cat idena/datadir/api.key
+echo
 echo -e "To view the API.KEY of your node, enter:"
 echo -e -n "${PURPLE}"
 echo 'cat idena/datadir/api.key'
