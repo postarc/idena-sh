@@ -82,13 +82,13 @@ if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
   fi
 fi
 
-echo -n -e "${YELLOW}Do you want enable mining autostart script? [y,N]:${NC}"
-read ANSWER
-if [ $ANSWER ]; then
-   if [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-   bash automine.sh
-   fi
-fi
+#echo -n -e "${YELLOW}Do you want enable mining autostart script? [y,N]:${NC}"
+#read ANSWER
+#if [ $ANSWER ]; then
+#   if [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+#   bash automine.sh
+#   fi
+#fi
 
 cd $HOMEFOLDER
 echo -e "${MAG}Idena node control:${NC}"
