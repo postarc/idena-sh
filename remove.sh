@@ -40,8 +40,8 @@ if [ -d $NODE_DIR ]; then sudo rm -rf $NODE_DIR; fi
 if [ -d $SCRIPT_DIR ]; then sudo rm -rf $SCRIPT_DIR; fi
 echo -e "${YELLOW}Cleaning crontab...${NC}"
 sudo -u root crontab -l > cron
-sed -i /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT1_NAME/d cron 
-sed -i /$HOMEFOLDER\\/$SCRIPT_DIR\\/$SCRIPT2_NAME/d cron
+sed -i /$USER\\/$SCRIPT_DIR\\/$SCRIPT1_NAME/d cron 
+sed -i /$USER\\/$SCRIPT_DIR\\/$SCRIPT2_NAME/d cron
 sudo -u root crontab cron
 rm cron
 echo -e "${YELLOW}Cleaning...${NC}"
