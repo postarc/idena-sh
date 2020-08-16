@@ -5,7 +5,7 @@ NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
 SCRIPT_NAME='idenaupdate.sh'
 SCRIPT_PATH="idena-scripts"
-SERVICE_NAME='idena'
+SERVICE_NAME='idena-root'
 RPCPORT=9009
 IPFSPORT=40405
 
