@@ -28,7 +28,7 @@ fi
 
 while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPCPORT)" ]
 do
-(( RPCPORT++))
+(( RPCPORT--))
 done
 
 while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $IPFSPORT)" ]
