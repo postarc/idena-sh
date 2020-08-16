@@ -47,7 +47,7 @@ sudo apt install -y git jq curl
 
 echo -e "${GREEN}Creating idena service...${NC}"
 echo "[Unit]" > $SERVICE_NAME.service
-echo "Description=idena" >> $SERVICE_NAME.service
+echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
 echo -e "User=$USER" >> $SERVICE_NAME.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
