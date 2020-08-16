@@ -5,7 +5,7 @@ SCRIPT_PATH="idena-scripts"
 DAEMON_PATH="idena"
 PATH_NAME="https://github.com/idena-network/idena-go.git"
 RPATH_NAME="https://github.com/idena-network/idena-go/releases/download"
-SERVICE_NAME="idena"
+SERVICE_NAME="idena-root"
 if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/root"
  else
