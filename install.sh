@@ -5,7 +5,6 @@ NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
 SCRIPT_NAME='idenaupdate.sh'
 SCRIPT_PATH="idena-scripts"
-SERVICE_NAME='idena-root'
 RPCPORT=9009
 IPFSPORT=40405
 
@@ -21,9 +20,10 @@ MAG='\e[1;35m'
 
 if [[ "$USER" == "root" ]]; then
         HOMEFOLDER="/root"
+        SERVICE_NAME='idena-root'
  else
         HOMEFOLDER="/home/$USER"
-        SERVICE_NAME="$USER"
+        SERVICE_NAME="idena-$USER"
 fi
 
 while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPCPORT)" ]
