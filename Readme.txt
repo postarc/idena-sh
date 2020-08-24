@@ -14,19 +14,19 @@ remove.sh - скрипт, полностью удаляющий ноду и вс
 Сюда же загружаются и проверяются версии исходников с https://github.com/idena-network/idena-go.git
 Скрипт автообновления сверяет версию исходников с версией бинарника idena-node, если они отличаются, то скачивает новый релиз.
 Запуск ноды осуществляется через сервис systemd.
-Изенить параметры запуска можно через редактирование файла /etc/systemd/system/idena.service
+Изенить параметры запуска можно через редактирование файла /etc/systemd/system/idena-$USER.service
 Порты по умолчанию:
 IPFS port (default 40403)
 Node tcp port (default 40404)
 Нода запускается с параметром --profile=lowpower
 
-Start idena node:     sudo systemctl start idena.service
-Stop idena node:      sudo systemctl stop idena.service
-Enabe idena service:  sudo systemctl enable idena.service
-Disable idena service:  sudo systemctl disable idena.service
-Status idena node:      sudo systemctl status idena.service
+Start idena node:     sudo systemctl start idena-$USER.service
+Stop idena node:      sudo systemctl stop idena-$USER.service
+Enabe idena service:  sudo systemctl enable idena-$USER.service
+Disable idena service:  sudo systemctl disable idena-$USER.service
+Status idena node:      sudo systemctl status idena-$USER.service
 
-For idena.service file editing:   sudo nano /etc/systemd/system/idena.service
+For idena.service file editing:   sudo nano /etc/systemd/system/idena-$USER.service
 After editing idena.service file: sudo systemctl daemon-reload
 The log is available on command:  tail -f ~/idena/datadir/logs/output.log
 
