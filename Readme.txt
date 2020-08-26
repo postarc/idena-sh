@@ -44,6 +44,8 @@ The log is available on command:  tail -f ~/idena/datadir/logs/output.log
 nano idena/datadir/api.key
 Просмотр/Редактирование nodekey:
 nano idena/datadir/keystore/nodekey
+После редактирования api.key/nodekey требуется перезапуск ноды:
+sudo systemctl restart idena-$USER.service
 
 Для установки нескольких нод на один сервер, необходимо запустить скрипт разных пользователей. На момент установке пользователь должен входить в группу sudo,
 после установки, для безопасности, пользователя можно удалить из группы суперпользователей. 
