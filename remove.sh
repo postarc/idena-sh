@@ -45,5 +45,5 @@ sed -i /$USER\\/$SCRIPT_DIR\\/$SCRIPT2_NAME/d cron
 sudo -u root crontab cron
 rm cron
 echo -e "${YELLOW}Cleaning...${NC}"
-rm -rf $SHELL_DIR
+rm -rf $HOMEFOLDER/$SHELL_DIR
 echo -e -n "${GREEN}"; echo 'All Done!!!'; echo -e -n "${NC}"
