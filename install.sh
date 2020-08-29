@@ -6,6 +6,7 @@ SCRIPT_DIR='idena-scripts'
 SCRIPT_NAME='idenaupdate.sh'
 SCRIPT_PATH="idena-scripts"
 RPCPORT=9009
+PORT=40402
 IPFSPORT=40405
 
 #color
@@ -36,6 +37,10 @@ do
 (( IPFSPORT++))
 done
 
+while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $PORT)" ]
+do
+(( IPFSPORT--))
+done
 
 CURRENTDIR=$(pwd)
 cd $HOMEFOLDER/idena-sh
@@ -51,7 +56,7 @@ echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
 echo -e "User=$USER" >> $SERVICE_NAME.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
-echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --rpcport $RPCPORT --ipfsport $IPFSPORT" >> $SERVICE_NAME.service
+echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --rpcport $RPCPORT --ipfsport $IPFSPORT" --port $PORT>> $SERVICE_NAME.service
 echo "Restart=always" >> $SERVICE_NAME.service
 echo "RestartSec=3" >> $SERVICE_NAME.service
 echo "LimitNOFILE=500000" >> $SERVICE_NAME.service
