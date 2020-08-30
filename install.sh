@@ -107,6 +107,7 @@ fi
 #   fi
 #fi
 echo -e "${GREEN}Starting idena node...${NC}" 
+sudo systemctl start $SERVICE_NAME.service
 sleep 10
 echo
 cd $HOMEFOLDER
