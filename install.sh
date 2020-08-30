@@ -49,6 +49,7 @@ echo -e "${GREEN}Preparing installation...${NC}"
 sudo apt update
 sudo apt install -y git jq curl
 
+echo -e "{ "Ipfsconf": { "Profile": "server" } }" > $HOMEFOLDER/config.json
 
 echo -e "${GREEN}Creating idena service...${NC}"
 echo "[Unit]" > $SERVICE_NAME.service
@@ -56,7 +57,7 @@ echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
 echo -e "User=$USER" >> $SERVICE_NAME.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
-echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --rpcport $RPCPORT --ipfsport $IPFSPORT" --port $PORT>> $SERVICE_NAME.service
+echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --config=$HOMEFOLDER/config.json --rpcport=$RPCPORT --ipfsport=$IPFSPORT" --port=$PORT>> $SERVICE_NAME.service 
 echo "Restart=always" >> $SERVICE_NAME.service
 echo "RestartSec=3" >> $SERVICE_NAME.service
 echo "LimitNOFILE=500000" >> $SERVICE_NAME.service
