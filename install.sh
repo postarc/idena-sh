@@ -58,7 +58,7 @@ sudo apt install -y git jq curl
 echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \": $P2P_PORT\" },\n" > $HOMEFOLDER/$NODE_DIR/config.json
 #, "BootstrapNodes": [], "NoDiscovery": false },
 echo -e "  \"RPC\": {\n   \"HTTPHost\": \"localhost\",\n   \"HTTPPort\": $RPCPORT },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
-echo -e "  \"Ipfsconf\": {\n   \"Profile\": \"server\",\n   \"IpfsPort\": $IPFSPORT, },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
+echo -e "  \"Ipfsconf\": {\n   \"Profile\": \"server\",\n   \"IpfsPort\": $IPFSPORT },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "  \"Sync\": {\n   \"FastSync\": true }\n }" >> $HOMEFOLDER/$NODE_DIR/config.json
 
 echo -e "${GREEN}Creating idena service...${NC}"
