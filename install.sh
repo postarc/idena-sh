@@ -106,7 +106,7 @@ fi
 #   fi
 #fi
 echo -e "${GREEN}Starting idena node...${NC}" 
-sleep 5
+sleep 10
 echo
 cd $HOMEFOLDER
 echo -e "${MAG}Idena node control:${NC}"
