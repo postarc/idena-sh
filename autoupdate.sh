@@ -52,7 +52,7 @@ echo -n '  if [ ! -z pKILL ]; then '  >> $SCRIPT_NAME
 echo -e "systemctl stop $SERVICE_NAME.service; fi" >> $SCRIPT_NAME
 echo -n '  mv $FILE_NAME ' >> $SCRIPT_NAME
 echo -e "$HOMEFOLDER/$DAEMON_PATH/idena-node" >> $SCRIPT_NAME
-echo -e " systemctl start $SERVICE_NAME.service" >> $SCRIPT_NAME
+echo -e "  systemctl start $SERVICE_NAME.service" >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 echo 'cd $CURRENTDIR' >> $SCRIPT_NAME
 
