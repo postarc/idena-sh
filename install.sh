@@ -95,7 +95,9 @@ fi
 #   bash automine.sh
 #   fi
 #fi
-
+echo -e "${GREEN}Starting idena node...${NC}" 
+sleep 5
+echo
 cd $HOMEFOLDER
 echo -e "${MAG}Idena node control:${NC}"
 echo -e "${CYAN}Start idena node: ${BLUE}sudo systemctl start $SERVICE_NAME.service${NC}"
