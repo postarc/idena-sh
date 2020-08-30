@@ -7,6 +7,7 @@ SCRIPT_NAME='idenaupdate.sh'
 SCRIPT_PATH="idena-scripts"
 RPCPORT=9009
 #PORT=50499
+P2P_PORT=50504
 IPFSPORT=50505
 
 #color
@@ -37,6 +38,11 @@ do
 (( IPFSPORT++))
 done
 
+while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $P2P_PORT)" ]
+do
+(( P2P_PORT++))
+done
+
 #while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $PORT)" ]
 #do
 #(( IPFSPORT--))
@@ -49,7 +55,30 @@ echo -e "${GREEN}Preparing installation...${NC}"
 sudo apt update
 sudo apt install -y git jq curl
 
-echo -e "{ \"Ipfsconf\": { \"Profile\": \"server\" } }" > $HOMEFOLDER/$NODE_DIR/config.json
+echo -e "{ \"DataDir\": \"\", \"P2P\": { \"ListenAddr\": \": $P2P_PORT\" }," > $HOMEFOLDER/$NODE_DIR/config.json
+#, "BootstrapNodes": [], "NoDiscovery": false },
+echo -e " \"RPC\": { \"HTTPHost\": \"localhost\", \"HTTPPort\": $RPCPORT }," >> $HOMEFOLDER/$NODE_DIR/config.json
+echo -e " \"Ipfsconf\": { \"Profile\": \"server\", \"IpfsPort\": $IPFSPORT, } }" >> $HOMEFOLDER/$NODE_DIR/config.json
+{
+  "DataDir": "",
+  "P2P": {
+    "ListenAddr": ":40404",
+    "BootstrapNodes": [],
+    "NoDiscovery": false
+  },
+  "RPC": {
+    "HTTPHost": "localhost",
+    "HTTPPort": 9009
+  },
+  "IpfsConf": {
+    "DataDir": "",
+    "IpfsPort": 40403,
+    "BootNodes": []
+  },
+  "Sync": {
+    "FastSync": true
+  }
+}
 
 echo -e "${GREEN}Creating idena service...${NC}"
 echo "[Unit]" > $SERVICE_NAME.service
