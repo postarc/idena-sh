@@ -49,7 +49,7 @@ echo -e "${GREEN}Preparing installation...${NC}"
 sudo apt update
 sudo apt install -y git jq curl
 
-echo -e "{ "Ipfsconf": { "Profile": "server" } }" > $HOMEFOLDER/$NODE_DIR/config.json
+echo -e "{ \"Ipfsconf\": { \"Profile\": \"server\" } }" > $HOMEFOLDER/$NODE_DIR/config.json
 
 echo -e "${GREEN}Creating idena service...${NC}"
 echo "[Unit]" > $SERVICE_NAME.service
