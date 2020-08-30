@@ -58,27 +58,8 @@ sudo apt install -y git jq curl
 echo -e "{ \"DataDir\": \"\", \"P2P\": { \"ListenAddr\": \": $P2P_PORT\" }," > $HOMEFOLDER/$NODE_DIR/config.json
 #, "BootstrapNodes": [], "NoDiscovery": false },
 echo -e " \"RPC\": { \"HTTPHost\": \"localhost\", \"HTTPPort\": $RPCPORT }," >> $HOMEFOLDER/$NODE_DIR/config.json
-echo -e " \"Ipfsconf\": { \"Profile\": \"server\", \"IpfsPort\": $IPFSPORT, } }" >> $HOMEFOLDER/$NODE_DIR/config.json
-{
-  "DataDir": "",
-  "P2P": {
-    "ListenAddr": ":40404",
-    "BootstrapNodes": [],
-    "NoDiscovery": false
-  },
-  "RPC": {
-    "HTTPHost": "localhost",
-    "HTTPPort": 9009
-  },
-  "IpfsConf": {
-    "DataDir": "",
-    "IpfsPort": 40403,
-    "BootNodes": []
-  },
-  "Sync": {
-    "FastSync": true
-  }
-}
+echo -e " \"Ipfsconf\": { \"Profile\": \"server\", \"IpfsPort\": $IPFSPORT, }," >> $HOMEFOLDER/$NODE_DIR/config.json
+echo -e " \"Sync\": { \"FastSync\": true } }" >> $HOMEFOLDER/$NODE_DIR/config.json
 
 echo -e "${GREEN}Creating idena service...${NC}"
 echo "[Unit]" > $SERVICE_NAME.service
