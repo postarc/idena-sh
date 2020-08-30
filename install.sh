@@ -67,7 +67,7 @@ echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
 echo -e "User=$USER" >> $SERVICE_NAME.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
-echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --config=$HOMEFOLDER/$NODE_DIR/config.json --rpcport=$RPCPORT --ipfsport=$IPFSPORT">> $SERVICE_NAME.service 
+echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --config=$HOMEFOLDER/$NODE_DIR/config.json">> $SERVICE_NAME.service 
 echo "Restart=always" >> $SERVICE_NAME.service
 echo "RestartSec=3" >> $SERVICE_NAME.service
 echo "LimitNOFILE=500000" >> $SERVICE_NAME.service
