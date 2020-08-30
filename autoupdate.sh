@@ -47,7 +47,7 @@ echo '  wget "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"' >> $SCRIPT_NAME
 echo '  chmod +x $FILE_NAME' >> $SCRIPT_NAME
 echo -n '  pKILL= $(pwdx $(ps -e | grep idena | awk '\''{print($1)}'\'') ' >> $SCRIPT_NAME
 echo -e "| grep $HOMEFOLDER)" >> $SCRIPT_NAME
-echo  'pKILL==$(echo $pKILL | awk '\''{print $1}'\'' | sed '\''s/.$//'\'')' >> $SCRIPT_NAME
+echo  '  pKILL=$(echo $pKILL | awk '\''{print $1}'\'' | sed '\''s/.$//'\'')' >> $SCRIPT_NAME
 echo -n '  if [ ! -z pKILL ]; then '  >> $SCRIPT_NAME
 echo -e "systemctl stop $SERVICE_NAME.service; fi" >> $SCRIPT_NAME
 echo -n '  mv $FILE_NAME ' >> $SCRIPT_NAME
