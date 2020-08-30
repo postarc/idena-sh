@@ -38,7 +38,7 @@ sudo rm /etc/systemd/system/$SERVICE_NAME.service
 echo -e "${YELLOW}Remove directory...${NC}"
 if [ -d $NODE_DIR ]; then sudo rm -rf $NODE_DIR; fi
 if [ -d $SCRIPT_DIR ]; then sudo rm -rf $SCRIPT_DIR; fi
-echo -e "${YELLOW}Cleaning crontab...${NC}"
+echo -e "${YELLOW}Removing crontab...${NC}"
 sudo -u root crontab -l > cron
 sed -i /$USER\\/$SCRIPT_DIR\\/$SCRIPT1_NAME/d cron 
 sed -i /$USER\\/$SCRIPT_DIR\\/$SCRIPT2_NAME/d cron
