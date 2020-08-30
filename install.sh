@@ -7,7 +7,7 @@ SCRIPT_NAME='idenaupdate.sh'
 SCRIPT_PATH="idena-scripts"
 RPCPORT=9009
 PORT=40399
-IPFSPORT=40405
+IPFSPORT=50505
 
 #color
 BLUE="\033[0;34m"
