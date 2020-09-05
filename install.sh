@@ -82,6 +82,7 @@ sudo ufw allow 40403
 sudo ufw allow 40404
 sudo ufw allow $IPFSPORT
 sudo ufw allow $RPCPORT
+sudo ufw allow $P2P_PORT
 
 echo -e "${GREEN}Downloading idena node...${NC}" 
 if [ -d $HOMEFOLDER/$NODE_DIR/datadir/ipfs ]; then rm -rf $HOMEFOLDER/$NODE_DIR/datadir/ipfs; fi
