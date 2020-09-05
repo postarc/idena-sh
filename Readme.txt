@@ -48,6 +48,6 @@ nano idena/datadir/keystore/nodekey
 sudo systemctl restart idena-$USER.service
 
 После отработки скрипта на экран будет выведен номер RPC-порта, этот номер нужно использовать при создании тунеля PUTTY.
-Если RPC-порт равер 9009, то в настройках тунеля указать Source port: 9999 , Destination: localhost:9009
-Далее, значение Source port необходимо будет прописать в настройки кошелька во вкладке NODE в поле Node address": http://localhost:9999
+Если RPC-порт равер 9009, то в настройках тунеля указать Destination: localhost:9009, Source port - может быть любым из свободных номеров портов, например 9999.
+Далее, значение Source port необходимо будет прописать в настройки кошелька во вкладке NODE в поле Node address", например: http://localhost:9999
 Чуть ниже, в поле Node api key требуется указать значение, содержащееся в файле idena/datadir/api.key, которое так же выводится на экран.
