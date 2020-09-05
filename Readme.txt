@@ -18,7 +18,7 @@ bash idena-sh/install.sh
 git clone https://github.com/postarc/idena-sh.git
 bash idena-sh/remove.sh
 ******************************************************
-Скрипт создает в текущем каталоге каталоги idena, idena-scripts и открывает порты 40403 и 40404.
+Скрипт создает в текущем каталоге каталоги idena, idena-scripts и открывает порты.
 В каталоге idena находится блокчейн ноды и демон idena-node.
 В каталоге idena-scripts находится скрипт автообновления ноды, который запускается посредством crontab один раз в час.
 Сюда же загружаются и проверяются версии исходников с https://github.com/idena-network/idena-go.git
