@@ -55,7 +55,7 @@ echo -e "${GREEN}Preparing installation...${NC}"
 sudo apt update
 sudo apt install -y git jq curl
 
-echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \":$P2P_PORT\"," > $HOMEFOLDER/$NODE_DIR/config.json
+echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \": $P2P_PORT\"," > $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "   \"MaxInboundPeers\": 12," >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "   \"MaxOutboundPeers\": 6  },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "  \"RPC\": {\n   \"HTTPHost\": \"localhost\",\n   \"HTTPPort\": $RPCPORT },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
