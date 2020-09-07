@@ -26,7 +26,7 @@ bash idena-sh/remove.sh
 Запуск ноды осуществляется через сервис systemd.
 Изенить параметры запуска можно через редактирование файла /etc/systemd/system/idena-$USER.service
 Порты по умолчанию:
-IPFS port (default 40403)
+IPFS port (default 40405)
 Node tcp port (default 40404)
 Нода запускается с параметром --profile=lowpower
 
