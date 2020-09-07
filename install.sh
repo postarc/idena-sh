@@ -55,11 +55,19 @@ echo -e "${GREEN}Preparing installation...${NC}"
 sudo apt update
 sudo apt install -y git jq curl
 
-echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \": $P2P_PORT\" },\n" > $HOMEFOLDER/$NODE_DIR/config.json
-#, "BootstrapNodes": [], "NoDiscovery": false },
+echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \": $P2P_PORT\"," > $HOMEFOLDER/$NODE_DIR/config.json
+echo -e "   \"MaxInboundPeers\": 12," >> $HOMEFOLDER/$NODE_DIR/config.json
+echo -e "   \"MaxOutboundPeers\": 6  },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "  \"RPC\": {\n   \"HTTPHost\": \"localhost\",\n   \"HTTPPort\": $RPCPORT },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "  \"Ipfsconf\": {\n   \"Profile\": \"server\",\n   \"IpfsPort\": $IPFSPORT },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "  \"Sync\": {\n   \"FastSync\": true }\n }" >> $HOMEFOLDER/$NODE_DIR/config.json
+
+echo -n -e "${YELLOW}Do you want reduce bandwidth usage? [Y,n]:${NC}"
+read ANSWER
+if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+   BANDWITH="--profile=lowpower"
+else BANDWITH=""
+fi
 
 echo -e "${GREEN}Creating idena service...${NC}"
 echo "[Unit]" > $SERVICE_NAME.service
@@ -67,7 +75,7 @@ echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
 echo -e "User=$USER" >> $SERVICE_NAME.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
-echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --profile=lowpower --config=$HOMEFOLDER/$NODE_DIR/config.json">> $SERVICE_NAME.service 
+echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --config=$HOMEFOLDER/$NODE_DIR/config.json $BANDWITH">> $SERVICE_NAME.service 
 echo "Restart=always" >> $SERVICE_NAME.service
 echo "RestartSec=3" >> $SERVICE_NAME.service
 echo "LimitNOFILE=500000" >> $SERVICE_NAME.service
@@ -99,7 +107,6 @@ if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
         rm cron
   fi
 fi
-
 #echo -n -e "${YELLOW}Do you want enable mining autostart script? [y,N]:${NC}"
 #read ANSWER
 #if [ $ANSWER ]; then
