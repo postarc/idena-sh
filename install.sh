@@ -85,6 +85,7 @@ echo "WantedBy=default.target" >> $SERVICE_NAME.service
 sudo cp $SERVICE_NAME.service /etc/systemd/system/$SERVICE_NAME.service
 sudo systemctl enable $SERVICE_NAME.service
 rm $SERVICE_NAME.service
+sudo systemctl daemon-reload
 
 sudo ufw allow 40403
 sudo ufw allow 40404
