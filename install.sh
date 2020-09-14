@@ -62,7 +62,7 @@ echo -e "  \"RPC\": {\n   \"HTTPHost\": \"localhost\",\n   \"HTTPPort\": $RPCPOR
 echo -e "  \"Ipfsconf\": {\n   \"Profile\": \"server\",\n   \"IpfsPort\": $IPFSPORT },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "  \"Sync\": {\n   \"FastSync\": true }\n }" >> $HOMEFOLDER/$NODE_DIR/config.json
 
-echo -n -e "${YELLOW}Do you want reduce bandwidth usage? [Y,n]:${NC}"
+echo -n -e "${YELLOW}Do you want reduce bandwidth usage and connected peer count down to 9? [Y,n]:${NC}"
 read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
    BANDWITH="--profile=lowpower"
