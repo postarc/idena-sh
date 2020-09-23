@@ -70,6 +70,11 @@ else BANDWITH=""
 fi
 
 echo -e "${GREEN}Creating idena service...${NC}"
+if [ -e /etc/systemd/system/idena.service ]; then 
+   sudo systemctl stop idena.service
+   sudo systemctl disable idena.service
+   sudo rm /etc/systemd/system/idena.service
+fi
 echo "[Unit]" > $SERVICE_NAME.service
 echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
