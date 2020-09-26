@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_NAME="idenaupdate.sh"
-BIN_NAME="idena-go"
+DAEMON_FILE="idena-go"
 SCRIPT_PATH="idena-scripts"
 DAEMON_PATH="idena"
 PATH_NAME="https://github.com/idena-network/idena-go.git"
@@ -40,7 +40,7 @@ echo 'LATEST_TAG=$(git tag --sort=-creatordate | head -1)' >> $SCRIPT_NAME
 echo 'cd ..' >> $SCRIPT_NAME
 echo 'LATEST_TAG=${LATEST_TAG//v/}' >> $SCRIPT_NAME
 echo -n 'if [[ -z $' >> $SCRIPT_NAME
-echo -n -e "($HOMEFOLDER/$DAEMON_PATH/$BIN_NAME -v | grep " >> $SCRIPT_NAME
+echo -n -e "($HOMEFOLDER/$DAEMON_PATH/$DAEMON_FILE -v | grep " >> $SCRIPT_NAME
 echo '$LATEST_TAG) ]]; then' >> $SCRIPT_NAME
 echo '  FILE_NAME+=$LATEST_TAG' >> $SCRIPT_NAME
 echo '  if [ -f $FILE_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
@@ -52,7 +52,7 @@ echo  '  pKILL=$(echo $pKILL | awk '\''{print $1}'\'' | sed '\''s/.$//'\'')' >> 
 echo -n '  if [ ! -z pKILL ]; then '  >> $SCRIPT_NAME
 echo -e "systemctl stop $SERVICE_NAME.service; fi" >> $SCRIPT_NAME
 echo -n '  mv $FILE_NAME ' >> $SCRIPT_NAME
-echo -e "$HOMEFOLDER/$DAEMON_PATH/$BIN_NAME" >> $SCRIPT_NAME
+echo -e "$HOMEFOLDER/$DAEMON_PATH/$DAEMON_FILE" >> $SCRIPT_NAME
 echo -e "  systemctl start $SERVICE_NAME.service" >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 echo 'cd $CURRENTDIR' >> $SCRIPT_NAME
