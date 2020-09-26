@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DAEMON_FILE='idena-node'
+DAEMON_FILE='idena-go'
 NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
 SCRIPT_NAME='idenaupdate.sh'
