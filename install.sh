@@ -80,7 +80,7 @@ echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
 echo -e "User=$USER" >> $SERVICE_NAME.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
-echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/idena-node --config=$HOMEFOLDER/$NODE_DIR/config.json $BANDWITH">> $SERVICE_NAME.service 
+echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/$DAEMON_FILE --config=$HOMEFOLDER/$NODE_DIR/config.json $BANDWITH">> $SERVICE_NAME.service 
 echo "Restart=always" >> $SERVICE_NAME.service
 echo "RestartSec=3" >> $SERVICE_NAME.service
 echo "LimitNOFILE=500000" >> $SERVICE_NAME.service
