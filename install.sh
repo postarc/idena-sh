@@ -107,7 +107,7 @@ sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
 
 if [ ! -f $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE ]; then
         cd $HOMEFOLDER/$SCRIPT_DIR/$DAEMON_FILE
-        LATEST_TAG=$(git tag --sort=-creatordate | head -2)
+        LATEST_TAG=$(git tag --sort=-creatordate | head -2 | sed '1d')
         LATEST_TAG=${LATEST_TAG//v/}
         FILE_NAME+=$LATEST_TAG
         wget  "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"
