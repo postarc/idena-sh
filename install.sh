@@ -105,14 +105,14 @@ if [ -d $HOMEFOLDER/$NODE_DIR/datadir/ipfs ]; then rm -rf $HOMEFOLDER/$NODE_DIR/
 bash autoupdate.sh
 sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
 
-if [ ! -f $HOMEFOLDER/$NODE_DIR/DAEMON_FILE ]; then
+if [ ! -f $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE ]; then
         cd $HOMEFOLDER/$SCRIPT_DIR/$DAEMON_FILE
         LATEST_TAG=$(git tag --sort=-creatordate | head -2)
         LATEST_TAG=${LATEST_TAG//v/}
         FILE_NAME+=$LATEST_TAG
         wget  "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"
         chmod +x $FILE_NAME
-        mv $FILE_NAME $HOMEFOLDER/$NODE_DIR/DAEMON_FILE
+        mv $FILE_NAME $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE
         rm $FILE_NAME
 fi
 
