@@ -111,9 +111,9 @@ if [ ! -f $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE ]; then
         LATEST_TAG=$(git tag --sort=-creatordate | head -2 | sed '1d')
         LATEST_TAG=${LATEST_TAG//v/}
         FILE_NAME+=$LATEST_TAG
-        wget  "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"
-        chmod +x $FILE_NAME
-        mv $FILE_NAME $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE
+        sudo wget  "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"
+        sudo chmod +x $FILE_NAME
+        sudo mv $FILE_NAME $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE
         cd $HOMEFOLDER
 fi
 
