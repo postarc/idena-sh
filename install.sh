@@ -115,6 +115,7 @@ if [ ! -f $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE ]; then
         chmod +x $FILE_NAME
         mv $FILE_NAME $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE
         rm $FILE_NAME
+        cd $HOMEFOLDER
 fi
 
 echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
