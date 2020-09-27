@@ -1,6 +1,8 @@
 #!/bin/bash
 
 DAEMON_FILE='idena-go'
+RELEASES_PATH="https://github.com/idena-network/idena-go/releases/download"
+FILE_NAME="idena-node-linux-"
 NODE_DIR='idena'
 SCRIPT_DIR='idena-scripts'
 SCRIPT_NAME='idenaupdate.sh'
@@ -102,6 +104,17 @@ echo -e "${GREEN}Downloading idena node...${NC}"
 if [ -d $HOMEFOLDER/$NODE_DIR/datadir/ipfs ]; then rm -rf $HOMEFOLDER/$NODE_DIR/datadir/ipfs; fi
 bash autoupdate.sh
 sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
+
+if [ ! -f $HOMEFOLDER/$NODE_DIR/DAEMON_FILE ]; then
+        cd $HOMEFOLDER/$SCRIPT_DIR/$DAEMON_FILE
+        LATEST_TAG=$(git tag --sort=-creatordate | head -2)
+        LATEST_TAG=${LATEST_TAG//v/}
+        FILE_NAME+=$LATEST_TAG
+        wget  "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"
+        chmod +x $FILE_NAME
+        mv $FILE_NAME $HOMEFOLDER/$NODE_DIR/DAEMON_FILE
+        rm $FILE_NAME
+fi
 
 echo -n -e "${YELLOW}Do you want enable node autoupdate script? [Y,n]:${NC}"
 read ANSWER
