@@ -114,7 +114,6 @@ if [ ! -f $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE ]; then
         wget  "$RELEASES_PATH/v$LATEST_TAG/$FILE_NAME"
         chmod +x $FILE_NAME
         mv $FILE_NAME $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE
-        rm $FILE_NAME
         cd $HOMEFOLDER
 fi
 
