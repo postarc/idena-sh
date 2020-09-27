@@ -106,6 +106,7 @@ bash autoupdate.sh
 sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
 
 if [ ! -f $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE ]; then
+        echo -e "${RED}Latest release not found, downloading previous ...${NC}"
         cd $HOMEFOLDER/$SCRIPT_DIR/$DAEMON_FILE
         LATEST_TAG=$(git tag --sort=-creatordate | head -2 | sed '1d')
         LATEST_TAG=${LATEST_TAG//v/}
