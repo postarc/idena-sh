@@ -71,7 +71,6 @@ if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
 else BANDWITH=""
 fi
 
-PNICE=0
 echo -n -e "${YELLOW}Do you want to change a service priority (niceness min=-20 max=20) [Default=0]:${NC}"
 read PNICE
 if [ -n "$PNICE" ] && [ "$PNICE" -eq "$PNICE" ] 2>/dev/null; then
