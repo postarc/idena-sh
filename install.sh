@@ -71,6 +71,13 @@ if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
 else BANDWITH=""
 fi
 
+PNICE=0
+echo -n -e "${YELLOW}Do you want to change a service priority (niceness min=-20 max=20) [Default=0]:${NC}"
+read PNICE
+if [ -n "$PNICE" ] && [ "$PNICE" -eq "$PNICE" ] 2>/dev/null; then
+   if [ $PNICE -lt -20 ] || [ $PNICE -gt 20 ]; then PNICE=0; fi
+else PNICE=0; fi
+
 echo -e "${GREEN}Creating idena service...${NC}"
 if [ -e /etc/systemd/system/idena.service ]; then 
    sudo systemctl stop idena.service
@@ -82,7 +89,7 @@ echo "Description=$SERVICE_NAME" >> $SERVICE_NAME.service
 echo "[Service]" >> $SERVICE_NAME.service
 echo -e "User=$USER" >> $SERVICE_NAME.service
 echo -e "WorkingDirectory=$HOMEFOLDER/$NODE_DIR" >> $SERVICE_NAME.service
-echo -e "ExecStart=$HOMEFOLDER/$NODE_DIR/$DAEMON_FILE --config=$HOMEFOLDER/$NODE_DIR/config.json $BANDWITH">> $SERVICE_NAME.service 
+echo -e "ExecStart=nice -n $PNICE $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE --config=$HOMEFOLDER/$NODE_DIR/config.json $BANDWITH">> $SERVICE_NAME.service 
 echo "Restart=always" >> $SERVICE_NAME.service
 echo "RestartSec=3" >> $SERVICE_NAME.service
 echo "LimitNOFILE=500000" >> $SERVICE_NAME.service
