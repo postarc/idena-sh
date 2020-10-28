@@ -29,9 +29,9 @@ echo 'CURRENTDIR=$(pwd)' >> $SCRIPT_NAME
 echo -e "cd $HOMEFOLDER/$SCRIPT_PATH" >> $SCRIPT_NAME
 echo 'if [ -d idena-go ]; then' >> $SCRIPT_NAME
 echo '  cd idena-go' >> $SCRIPT_NAME
-echo '  sudo git fetch' >> $SCRIPT_NAME
+echo '  git fetch' >> $SCRIPT_NAME
 echo '  else' >> $SCRIPT_NAME
-echo '  sudo git clone $GITPATH' >> $SCRIPT_NAME
+echo '  git clone $GITPATH' >> $SCRIPT_NAME
 echo '  cd idena-go' >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 
