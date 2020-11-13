@@ -6,6 +6,7 @@ IDENAGO="https://github.com/idena-network/idena-go.git"
 IDENAPATH="idena-go"
 RELEASEPATH="https://github.com/idena-network/idena-go/releases/download"
 RELEASENAME="idena-node-linux-"
+START_SCRIPT="docker-start.sh"
 RPCPORT=9009
 #PORT=50499
 P2PPORT=40404
@@ -20,6 +21,9 @@ RED='\033[0;31m'
 GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
+
+CURRENTDIR=$(pwd)
+PATH="/opt/idena/bin:${PATH}" 
 
 #while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPCPORT)" ]
 #do
@@ -62,10 +66,9 @@ IPFSPORT=$ANSWER
 
 
 echo $DOCKER_NAME >> /opt/idena/bin/docker-name
-echo $RPCPORT >> rpc-port
-echo $P2PPORT >> p2p-port
-echo $IPFSPORT >> ipfs-port
-
+echo $RPCPORT >> /opt/idena/bin/rpc-port
+echo $P2PPORT >> /opt/idena/bin/p2p-port
+echo $IPFSPORT >> /opt/idena/bin/ipfs-port
 
 if [ -d $IDENAPATH ]; then git fetch; else git clone $IDENAGO; fi
 cd $IDENAPATH
@@ -75,4 +78,7 @@ RELEASENAME+=$LATEST_TAG
 wget "$RELEASEPATH/v$LATEST_TAG/$RELEASENAME"
 chmod +x $RELEASENAME
 mv $RELEASENAME /opt/idena/bin/idena
+
+echo -e "${GREEN}Writing a startup script...${NC}"
+echo -e "docker run -d --name $DOCKER_NAME  -p $RPCPORT:$RPCPORT -p $P2PPORT:$P2PPORT -p $IPFSPORT:$IPFSPORT -v $CURRENTDIR/data/$DOCKER_NAME:/root/.idena -w /root/.idena --restart unless-stopped --hostname idena --rm -it idena-go" >> $START_SCRIPT
 
