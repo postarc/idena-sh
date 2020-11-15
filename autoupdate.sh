@@ -36,7 +36,7 @@ echo '  cd idena-go' >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
 
 #echo -e "chown -R $USER:$USER $HOMEFOLDER/idena-go" >> $SCRIPT_NAME
-echo 'LATEST_TAG=$(git tag --sort=-creatordate | head -1)' >> $SCRIPT_NAME
+echo 'LATEST_TAG=$(git tag -l | sort -V | tail -n 1)' >> $SCRIPT_NAME
 echo 'cd ..' >> $SCRIPT_NAME
 echo 'LATEST_TAG=${LATEST_TAG//v/}' >> $SCRIPT_NAME
 echo -n 'DAEMON_VERSION=$(' >> $SCRIPT_NAME
