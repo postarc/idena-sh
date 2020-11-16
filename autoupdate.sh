@@ -25,7 +25,7 @@ echo 'FILE_NAME="idena-go"' >> $SCRIPT_NAME
 echo >> $SCRIPT_NAME
 echo 'wget https://api.github.com/repos/idena-network/idena-go/releases/latest' >> $SCRIPT_NAME
 echo 'if [ -f ./latest ]; then' >> $SCRIPT_NAME
-echo '   LATEST_TAG=$(jq --raw-output '.tag_name' "./latest")' >> $SCRIPT_NAME
+echo '   LATEST_TAG=$(jq --raw-output '"'"'.tag_name'"'"' "./latest")' >> $SCRIPT_NAME
 echo '   LATEST_TAG=${LATEST_TAG//v/}' >> $SCRIPT_NAME
 echo -n -e "   $HOMEFOLDER/$DAEMON_PATH/$DAEMON_FILE -v | awk " >> $SCRIPT_NAME
 echo ''\''{print $3}'\'')' >> $SCRIPT_NAME
