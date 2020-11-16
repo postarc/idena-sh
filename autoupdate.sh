@@ -34,13 +34,14 @@ echo '   if [ -z $DAEMON_VERSION ]; then DAEMON_VERSION="new"; fi' >> $SCRIPT_NA
 echo '   if [ $DAEMON_VERSION != $LATEST_TAG ]; then' >> $SCRIPT_NAME
 echo -n '      wget -O "./$FILE_NAME" $' >> $SCRIPT_NAME
 echo '(jq --raw-output '"'"'.assets | map(select(.name | startswith("idena-node-linux"))) | .[0].browser_download_url'"'"' "./latest")' >> $SCRIPT_NAME
-echo -e "      if [ -f $FILE_NAME ]; then" >> $SCRIPT_NAME
-echo -e "         chmod +x $FILE_NAME" >> $SCRIPT_NAME
+echo '      if [ -f $FILE_NAME ]; then' >> $SCRIPT_NAME
+echo '         chmod +x $FILE_NAME' >> $SCRIPT_NAME
 echo '         pKILL=$(pwdx $(ps -e | grep idena | awk '{print $1 }') | grep /root)' >> $SCRIPT_NAME
 echo '         pKILL=$(echo $pKILL | awk '{print $1}' | sed 's/.$//')' >> $SCRIPT_NAME
 echo -n '         if [ ! -z pKILL ]; then systemctl ' >> $SCRIPT_NAME
 echo -e "stop idena-$USER.service; fi" >> $SCRIPT_NAME
-echo -e "         mv $FILE_NAME $HOMEFOLDER/$DAEMON_PATH/$DAEMON_FILE" >> $SCRIPT_NAME
+echo -n '         mv $FILE_NAME ' >> $SCRIPT_NAME
+echo -e "$HOMEFOLDER/$DAEMON_PATH/$DAEMON_FILE" >> $SCRIPT_NAME
 echo -e "         systemctl start idena-$USER.service" >> $SCRIPT_NAME
 echo '		 rm ./latest' >> $SCRIPT_NAME
 echo '      fi' >> $SCRIPT_NAME
