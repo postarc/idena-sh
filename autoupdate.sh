@@ -32,8 +32,8 @@ echo ''\''{print $3}'\'')' >> $SCRIPT_NAME
 echo '   if [ -z $DAEMON_VERSION ]; then DAEMON_VERSION="new"; fi' >> $SCRIPT_NAME
 echo '   if [ $DAEMON_VERSION != $LATEST_TAG ]; then  FILE_NAME+=$LATEST_TAG' >> $SCRIPT_NAME
 echo '      if [ -f $FILE_NAME ]; then rm $FILE_NAME; fi' >> $SCRIPT_NAME
-echo -e -n "      wget -O "./$FILE_NAME" " >> $SCRIPT_NAME
-echo '$(jq --raw-output '.assets | map(select(.name | startswith("idena-node-linux"))) | .[0].browser_download_url' "./latest")' >> $SCRIPT_NAME
+echo -e -n "      wget -O "./$FILE_NAME" $" >> $SCRIPT_NAME
+echo '(jq --raw-output '.assets | map(select(.name | startswith("idena-node-linux"))) | .[0].browser_download_url' "./latest")' >> $SCRIPT_NAME
 echo -e "      if [ -f $FILE_NAME ]; then" >> $SCRIPT_NAME
 echo -e "         chmod +x $FILE_NAME" >> $SCRIPT_NAME
 echo '         pKILL=$(pwdx $(ps -e | grep idena | awk '{print $1 }') | grep /root)' >> $SCRIPT_NAME
