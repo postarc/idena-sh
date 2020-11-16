@@ -54,8 +54,17 @@ CURRENTDIR=$(pwd)
 cd $HOMEFOLDER/idena-sh
 if [ ! -d $HOMEFOLDER/$NODE_DIR ]; then mkdir $HOMEFOLDER/$NODE_DIR; fi
 echo -e "${GREEN}Preparing installation...${NC}"
-sudo apt update
-sudo apt install -y jq curl
+apt --help > /dev/null
+if [ $? -eq 0 ]; then
+      sudo apt update
+      sudo apt install -y jq curl
+else
+      yum --help > /dev/null
+      if [ $? -eq 0 ]; then
+         sudo yum check-update
+         sudo yum install -y jq curl
+      fi
+fi
 
 echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \": $P2P_PORT\"," > $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "   \"MaxInboundPeers\": 12," >> $HOMEFOLDER/$NODE_DIR/config.json
