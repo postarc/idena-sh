@@ -43,11 +43,10 @@ echo -e "stop idena-$USER.service; fi" >> $SCRIPT_NAME
 echo -n '         mv $FILE_NAME ' >> $SCRIPT_NAME
 echo -e "$HOMEFOLDER/$DAEMON_PATH/$DAEMON_FILE" >> $SCRIPT_NAME
 echo -e "         systemctl start idena-$USER.service" >> $SCRIPT_NAME
-echo '		 rm ./latest' >> $SCRIPT_NAME
 echo '      fi' >> $SCRIPT_NAME
 echo '   fi' >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
-
+echo 'rm latest*' >> $SCRIPT_NAME
 chmod +x $SCRIPT_NAME
 cd $CURRENTDIR
 
