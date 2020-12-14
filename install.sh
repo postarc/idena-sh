@@ -30,20 +30,20 @@ if [[ "$USER" == "root" ]]; then
         SERVICE_NAME="idena-$USER"
 fi
 
-while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPCPORT)" ]
-do
-(( RPCPORT--))
-done
+#while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPCPORT)" ]
+#do
+#(( RPCPORT--))
+#done
 
-while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $IPFSPORT)" ]
-do
-(( IPFSPORT++))
-done
+#while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $IPFSPORT)" ]
+#do
+#(( IPFSPORT++))
+#done
 
-while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $P2P_PORT)" ]
-do
-(( P2P_PORT++))
-done
+#while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $P2P_PORT)" ]
+#do
+#(( P2P_PORT++))
+#done
 
 #while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $PORT)" ]
 #do
