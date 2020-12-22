@@ -122,7 +122,7 @@ sudo ufw allow $P2P_PORT
 echo -e "${GREEN}Downloading idena node...${NC}" 
 if [ -d $HOMEFOLDER/$NODE_DIR/datadir/ipfs ]; then rm -rf $HOMEFOLDER/$NODE_DIR/datadir/ipfs; fi
 bash autoupdate.sh
-sudo bash $HOMEFOLDER/$SCRIPT_DIR/idenaupdate.sh
+sudo bash $HOMEFOLDER/$SCRIPT_DIR/$SCRIPT_NAME
 
 if [ ! -f $HOMEFOLDER/$NODE_DIR/$DAEMON_FILE ]; then
         echo -e "${RED}Latest release not found, downloading previous ...${NC}"
