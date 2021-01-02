@@ -73,12 +73,13 @@ echo -e "  \"RPC\": {\n   \"HTTPHost\": \"localhost\",\n   \"HTTPPort\": $RPCPOR
 echo -e "  \"Ipfsconf\": {\n   \"Profile\": \"server\",\n   \"IpfsPort\": $IPFSPORT },\n" >> $HOMEFOLDER/$NODE_DIR/config.json
 echo -e "  \"Sync\": {\n   \"FastSync\": true }\n }" >> $HOMEFOLDER/$NODE_DIR/config.json
 
-echo -n -e "${YELLOW}Do you want reduce bandwidth usage and connected peer count down to 9? [Y,n]:${NC}"
-read ANSWER
-if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
-   BANDWITH="--profile=lowpower"
-else BANDWITH=""
-fi
+#echo -n -e "${YELLOW}Do you want reduce bandwidth usage and connected peer count down to 9? [Y,n]:${NC}"
+#read ANSWER
+#if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+#   BANDWITH="--profile=lowpower"
+#else BANDWITH=""
+#fi
+BANDWITH=""
 
 echo -n -e "${YELLOW}Do you want to change a service priority (niceness min=-20 max=20) [Default=0]:${NC}"
 read PNICE
