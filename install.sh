@@ -62,6 +62,8 @@ else
       yum --help > /dev/null
       if [ $? -eq 0 ]; then
          sudo yum check-update
+         sudo yum install epel-release -y
+         sudo yum update -y
          sudo yum install -y jq curl
       fi
 fi
