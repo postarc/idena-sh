@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 SCRIPT_NAME="idenaupdate.sh"
 DAEMON_FILE="idena-go"
