@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DAEMON_PATH="idena/datadir"
 SCRIPT_PATH="idena-scripts"
