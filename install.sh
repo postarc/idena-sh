@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DAEMON_FILE='idena-go'
 RELEASES_PATH="https://github.com/idena-network/idena-go/releases/download"

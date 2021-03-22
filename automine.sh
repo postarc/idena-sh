@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DAEMON_PATH="idena/datadir"
 SCRIPT_PATH="idena-scripts"
@@ -23,7 +23,7 @@ if [[ -z $(sudo -u root crontab -l | grep "$HOMEFOLDER/$SCRIPT_PATH/automineon.s
 fi
 
 cd $HOMEFOLDER/$SCRIPT_PATH
-echo '#!/bin/bash' > $SCRIPT_NAME
+echo '#!/usr/bin/env bash' > $SCRIPT_NAME
 echo >> $SCRIPT_NAME
 echo 'PORT=9009' >> $SCRIPT_NAME
 echo -e "APIPATH=$HOMEFOLDER/$DAEMON_PATH" >> $SCRIPT_NAME
