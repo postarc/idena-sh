@@ -28,8 +28,8 @@
 ### Порты по умолчанию:
 ###### IPFS port (default 40405)
 ###### Node tcp port (default 40404)
+******************************************************
 ###### Нода запускается с параметром --profile=lowpower
-***
 ###### Start idena node:     `sudo systemctl start idena-$USER.service`
 ###### Stop idena node:      `sudo systemctl stop idena-$USER.service`
 ###### Enabe idena service:  `sudo systemctl enable idena-$USER.service`
