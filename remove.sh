@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DAEMON_FILE='idena-node'
 NODE_DIR='idena'
