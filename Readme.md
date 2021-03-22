@@ -51,5 +51,5 @@
 ###### Если RPC-порт равер 9009, то в настройках тунеля указать Destination: localhost:9009, Source port - может быть любым из свободных номеров портов, например 9999.
 ###### Далее, значение Source port необходимо будет прописать в настройки кошелька во вкладке NODE в поле Node address, например: http://localhost:9999
 ###### Чуть ниже, в поле Node api key требуется указать значение, содержащееся в файле idena/datadir/api.key, которое так же выводится на экран.
-
-# [Биржа qtrade.io - покупка \ продажа IDNA](https://qtrade.io/?ref=DW246DSMGU2E)![Idena's price](https://img.shields.io/badge/dynamic/json?color=inactive&label=Idena%3A&query=%24.idena.usd&suffix=%24&url=https%3A%2F%2Fapi.coingecko.com%2Fapi%2Fv3%2Fsimple%2Fprice%3Fids%3Didena%26vs_currencies%3Dusd)
+# ![Idena's price](https://img.shields.io/badge/dynamic/json?color=inactive&label=Idena%3A&query=%24.idena.usd&suffix=%24&url=https%3A%2F%2Fapi.coingecko.com%2Fapi%2Fv3%2Fsimple%2Fprice%3Fids%3Didena%26vs_currencies%3Dusd)
+## [Биржа qtrade.io - покупка \ продажа IDNA](https://qtrade.io/?ref=DW246DSMGU2E)
