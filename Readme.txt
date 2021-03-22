@@ -40,6 +40,14 @@ For idena.service file editing:   sudo nano /etc/systemd/system/idena-$USER.serv
 After editing idena.service file: sudo systemctl daemon-reload
 The log is available on command:  tail -f ~/idena/datadir/logs/output.log
 
+Скачивание блокчейна (для быстрой синхронизации):
+sudo systemctl stop idena-$USER.service
+sudo apt install unzip
+cd ~/idena/datadir/idenachain.db
+wget https://idena.site/idenachain.db.zip
+unzip denachain.db.zip (подтверждаем замену старых файлов)
+sudo systemctl start idena-$USER.service
+
 Просмотр/Редактирование API.KEY:
 nano idena/datadir/api.key
 Просмотр/Редактирование nodekey:
