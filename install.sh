@@ -149,6 +149,13 @@ if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
         rm cron
   fi
 fi
+echo -n -e "${YELLOW}Do you want download idenachain.db.zip for fast sync? [Y,n]:${NC}"
+read ANSWER
+if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
+        wget https://sync.idena-ar.com/idenachain.db.zip
+        unzip idenachain.db.zip $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db/
+        rm idenachain.db.zip
+fi        
 #echo -n -e "${YELLOW}Do you want enable mining autostart script? [y,N]:${NC}"
 #read ANSWER
 #if [ $ANSWER ]; then
