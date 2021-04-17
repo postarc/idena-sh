@@ -153,6 +153,7 @@ echo -n -e "${YELLOW}Do you want download idenachain.db.zip for fast sync? [Y,n]
 read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
         wget https://sync.idena-ar.com/idenachain.db.zip
+        if [ ! -d $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db ]; then mkdir $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db; fi
         unzip idenachain.db.zip $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db/
         rm idenachain.db.zip
 fi        
