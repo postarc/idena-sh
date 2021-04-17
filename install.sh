@@ -154,7 +154,7 @@ read ANSWER
 if [ -z $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
         wget https://sync.idena-ar.com/idenachain.db.zip
         if [ ! -d $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db ]; then mkdir $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db; fi
-        unzip idenachain.db.zip $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db/
+        unzip idenachain.db.zip -d $HOMEFOLDER/$NODE_DIR/datadir/idenachain.db/
         rm idenachain.db.zip
 fi        
 #echo -n -e "${YELLOW}Do you want enable mining autostart script? [y,N]:${NC}"
