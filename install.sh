@@ -115,6 +115,7 @@ sudo cp $SERVICE_NAME.service /etc/systemd/system/$SERVICE_NAME.service
 sudo systemctl enable $SERVICE_NAME.service
 rm $SERVICE_NAME.service
 sudo systemctl daemon-reload
+sudo systemctl stop $SERVICE_NAME.service
 
 sudo ufw allow 40403
 sudo ufw allow 40404
