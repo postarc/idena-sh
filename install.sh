@@ -55,17 +55,14 @@ cd $HOMEFOLDER/idena-sh
 if [ ! -d $HOMEFOLDER/$NODE_DIR ]; then mkdir $HOMEFOLDER/$NODE_DIR; fi
 echo -e "${GREEN}Preparing installation...${NC}"
 apt --help > /dev/null
-if [ $? -eq 0 ]; then
+if type apt-get; then
       sudo apt update
       sudo apt install -y jq curl
-else
-      yum --help > /dev/null
-      if [ $? -eq 0 ]; then
-         sudo yum check-update
-         sudo yum install epel-release -y
-         sudo yum update -y
-         sudo yum install -y jq curl
-      fi
+elif type yum; then
+      sudo yum check-update
+      sudo yum install epel-release -y
+      sudo yum update -y
+      sudo yum install -y jq curl
 fi
 
 echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \": $P2P_PORT\"," > $HOMEFOLDER/$NODE_DIR/config.json
@@ -117,11 +114,11 @@ rm $SERVICE_NAME.service
 sudo systemctl daemon-reload
 sudo systemctl stop $SERVICE_NAME.service
 
-sudo ufw allow 40403
-sudo ufw allow 40404
-sudo ufw allow $IPFSPORT
-sudo ufw allow $RPCPORT
-sudo ufw allow $P2P_PORT
+if type apt-get; then
+   sudo ufw allow $IPFSPORT
+   sudo ufw allow $RPCPORT
+   sudo ufw allow $P2P_PORT
+fi
 
 echo -e "${GREEN}Downloading idena node...${NC}" 
 if [ -d $HOMEFOLDER/$NODE_DIR/datadir/ipfs ]; then rm -rf $HOMEFOLDER/$NODE_DIR/datadir/ipfs; fi
