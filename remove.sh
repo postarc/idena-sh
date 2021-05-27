@@ -32,8 +32,8 @@ if [ ! $ANSWER ] || [ $ANSWER = 'Y' ] || [ $ANSWER = 'y' ]; then
      mv $NODE_DIR/datadir/keystore/nodekey $HOMEFOLDER/
 fi
 echo -e "${YELLOW}Stop & remove service...${NC}"
-sudo systemctl stop $SERVICE_NAME.serivce
-sudo systemctl disable $SERVICE_NAME.service
+sudo systemctl stop $SERVICE_NAME
+sudo systemctl disable $SERVICE_NAME
 sudo rm /etc/systemd/system/$SERVICE_NAME.service
 echo -e "${YELLOW}Remove directory...${NC}"
 if [ -d $NODE_DIR ]; then sudo rm -rf $NODE_DIR; fi
