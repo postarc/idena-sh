@@ -57,12 +57,12 @@ echo -e "${GREEN}Preparing installation...${NC}"
 apt --help > /dev/null
 if type apt-get; then
       sudo apt update
-      sudo apt install -y jq curl unzip
+      sudo apt install -y jq curl unzip wget
 elif type yum; then
       sudo yum check-update
       sudo yum install epel-release -y
       sudo yum update -y
-      sudo yum install -y jq curl unzip
+      sudo yum install -y jq curl unzip wget
 fi
 
 echo -e "{\n  \"P2P\": {\n   \"ListenAddr\": \": $P2P_PORT\"," > $HOMEFOLDER/$NODE_DIR/config.json
