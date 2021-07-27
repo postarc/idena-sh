@@ -116,7 +116,7 @@ sudo systemctl stop $SERVICE_NAME.service
 
 if type apt-get; then
    sudo ufw allow $IPFSPORT
-   sudo ufw allow $RPCPORT
+   #sudo ufw allow $RPCPORT
    sudo ufw allow $P2P_PORT
 fi
 
