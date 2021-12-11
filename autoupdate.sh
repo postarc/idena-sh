@@ -39,10 +39,10 @@ echo '         chmod +x $FILE_NAME' >> $SCRIPT_NAME
 echo '         pKILL=$(pwdx $(ps -e | grep idena | awk '"'"'{print $1 }'"'"') | grep /root)' >> $SCRIPT_NAME
 echo '         pKILL=$(echo $pKILL | awk '"'"'{print $1}'"'"' | sed 's/.$//')' >> $SCRIPT_NAME
 echo -n '         if [ ! -z pKILL ]; then systemctl ' >> $SCRIPT_NAME
-echo -e "stop idena-$USER.service; fi" >> $SCRIPT_NAME
+echo -e "stop $SERVICE_NAME.service; fi" >> $SCRIPT_NAME
 echo -n '         mv $FILE_NAME ' >> $SCRIPT_NAME
 echo -e "$HOMEFOLDER/$DAEMON_PATH/$DAEMON_FILE" >> $SCRIPT_NAME
-echo -e "         systemctl start idena-$USER.service" >> $SCRIPT_NAME
+echo -e "         systemctl start $SERVICE_NAME.service" >> $SCRIPT_NAME
 echo '      fi' >> $SCRIPT_NAME
 echo '   fi' >> $SCRIPT_NAME
 echo 'fi' >> $SCRIPT_NAME
