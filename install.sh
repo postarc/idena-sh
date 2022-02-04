@@ -54,8 +54,8 @@ CURRENTDIR=$(pwd)
 cd $HOMEFOLDER/idena-sh
 if [ ! -d $HOMEFOLDER/$NODE_DIR ]; then mkdir $HOMEFOLDER/$NODE_DIR; fi
 echo -e "${GREEN}Preparing installation...${NC}"
-apt --help > /dev/null
 if type apt-get; then
+      if type sudo; then break; elif apt install sudo 
       sudo apt update
       sudo apt install -y jq curl unzip wget sudo
 elif type yum; then
