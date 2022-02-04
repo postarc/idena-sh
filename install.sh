@@ -57,7 +57,7 @@ echo -e "${GREEN}Preparing installation...${NC}"
 apt --help > /dev/null
 if type apt-get; then
       sudo apt update
-      sudo apt install -y jq curl unzip wget
+      sudo apt install -y jq curl unzip wget sudo
 elif type yum; then
       sudo yum check-update
       sudo yum install epel-release -y
