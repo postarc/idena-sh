@@ -22,13 +22,14 @@ GREEN="\033[0;32m"
 NC='\033[0m'
 MAG='\e[1;35m'
 
-if [[ "$USER" == "root" ]]; then
-        HOMEFOLDER="/root"
-        SERVICE_NAME='idena-root'
- else
-        HOMEFOLDER="/home/$USER"
-        SERVICE_NAME="idena-$USER"
-fi
+#if [[ "$USER" == "root" ]]; then
+#        HOMEFOLDER="/root"
+#        SERVICE_NAME='idena-root'
+# else
+#        HOMEFOLDER="/home/$USER"
+#        SERVICE_NAME="idena-$USER"
+#fi
+SERVICE_NAME="idena"
 
 #while [ -n "$(sudo lsof -i -s TCP:LISTEN -P -n | grep $RPCPORT)" ]
 #do
