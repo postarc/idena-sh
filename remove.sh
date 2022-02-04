@@ -7,13 +7,13 @@ SHELL_DIR='idena-sh'
 SCRIPT1_NAME='idenaupdate.sh'
 SCRIPT2_NAME='automineon.sh'
 
-#if [[ "$USER" == "root" ]]; then
-#        HOMEFOLDER="/root"
+if [[ "$USER" == "root" ]]; then
+        HOMEFOLDER="/root"
 #        SERVICE_NAME='idena-root'
-# else
-#        HOMEFOLDER="/home/$USER"
+else
+        HOMEFOLDER="/home/$USER"
 #        SERVICE_NAME="idena-$USER"
-#fi
+fi
 SERVICE_NAME="idena"
 
 #color
