@@ -5,13 +5,13 @@ DAEMON_FILE="idena-go"
 SCRIPT_PATH="idena-scripts"
 DAEMON_PATH="idena"
 
-#if [[ "$USER" == "root" ]]; then
-#        HOMEFOLDER="/root"
+if [[ "$USER" == "root" ]]; then
+        HOMEFOLDER="/root"
 #        SERVICE_NAME='idena-root'
-# else
-#        HOMEFOLDER="/home/$USER"
+else
+        HOMEFOLDER="/home/$USER"
 #        SERVICE_NAME="idena-$USER"
-#fi
+fi
 SERVICE_NAME="idena"
 
 CURRENTDIR=$(pwd)
